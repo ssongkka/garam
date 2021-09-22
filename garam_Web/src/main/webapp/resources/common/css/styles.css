@@ -1,0 +1,35 @@
+@charset "EUC-KR";
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	background-color: #edf2f9;
+	margin: auto 0px;
+	padding: 10px;
+	padding-top: 10px;
+}
+
+section {
+	float: left;
+	width: 80%;
+}
+
+aside {
+	float: left;
+	width: 19%;
+	padding-left: 1%;
+}
+
+.card-song {
+	background: #ffffff;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.301);
+	border-radius: 5px; /* 5px rounded corners */
+}
+
+.card-title {
+	background: #ffffff;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.301);
+	border-radius: 5px 5px 0px 0px; /* 5px rounded corners */
+}

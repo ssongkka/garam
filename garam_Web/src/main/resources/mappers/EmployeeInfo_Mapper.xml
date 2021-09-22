@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.garam.web.common.EmployeeInfo_Mapper">
+
+	<select id="get_Emp_List"
+		resultType="com.garam.common.model.EmployeeList_VO">
+
+		SELECT
+
+		id, name, phone1
+
+		FROM employee_info
+	</select>
+
+
+
+	<select id="get_Emp_Contents" parameterType="String"
+		resultType="com.garam.common.model.EmployeeInfo_VO">
+
+		SELECT
+
+		id,
+		company,
+		kind,
+		joind,
+		endD,
+		name,
+		gender,
+		birthday,
+		phone1,
+		phone2,
+		address,
+		garage,
+		bosu_M,
+		bobu_J,
+		drvL,
+		busL,
+		memo,
+		bank,
+		gye,
+		gyename,
+		base_M,
+		kuk_M,
+		gun_M,
+		go_M,
+		san_M,
+		img,
+		trash
+
+		FROM
+
+		employee_info
+
+		WHERE
+
+		id = #{id}
+	</select>
+
+
+
+	<insert id="insert_Emp"
+		parameterType="com.garam.common.model.EmployeeInfo_VO">
+
+		INSERT INTO employee_info
+
+		(
+		id,
+		company,
+		kind,
+		joind,
+		endD,
+		name,
+		gender,
+		birthday,
+		phone1,
+		phone2,
+		address,
+		garage,
+		bosu_M,
+		bobu_J,
+		drvL,
+		busL,
+		memo,
+		bank,
+		gye,
+		gyename,
+		base_M,
+		kuk_M,
+		gun_M,
+		go_M,
+		san_M,
+		img,
+		trash
+		)
+
+		VALUES
+
+		(
+		#{id},
+		#{company},
+		#{kind},
+		#{joind},
+		#{endd},
+		#{name},
+		#{gender},
+		#{birthday},
+		#{phone1},
+		#{phone2},
+		#{address},
+		#{garage},
+		#{bosuM},
+		#{bobuJ},
+		#{drvl},
+		#{busl},
+		#{memo},
+		#{bank},
+		#{gye},
+		#{gyename},
+		#{baseM},
+		#{kukM},
+		#{gunM},
+		#{goM},
+		#{sanM},
+		#{img},
+		#{trash});
+		)
+
+	</insert>
+
+
+
+	<update id="update_Emp"
+		parameterType="com.garam.common.model.EmployeeInfo_VO">
+
+		UPDATE employee_info
+
+		SET
+
+		id = #{id},
+		company = #{company},
+		kind = #{kind},
+		joind = #{joind},
+		endD =
+		#{endd},
+		name = #{name},
+		gender =
+		#{gender},
+		birthday = #{birthday},
+		phone1 = #{phone1},
+		phone2 =
+		#{phone2},
+		address = #{address},
+		garage =
+		#{garage},
+		bosu_M = #{bosuM},
+		bobu_J = #{bobuJ},
+		drvL = #{drvl},
+		busL =
+		#{busl},
+		memo = #{memo},
+		bank =
+		#{bank},
+		gye = #{gye},
+		gyename =
+		#{gyename},
+		base_M = #{baseM},
+		kuk_M =
+		#{kukM},
+		gun_M = #{gunM},
+		go_M =
+		#{goM},
+		san_M = #{sanM},
+		img = #{img},
+		trash = #{trash}
+
+		WHERE id = #{id};
+
+	</update>
+
+
+
+	<delete id="delete_Emp" parameterType="String">
+
+		DELETE FROM employee_info
+
+		WHERE id = #{id};
+
+	</delete>
+
+</mapper>

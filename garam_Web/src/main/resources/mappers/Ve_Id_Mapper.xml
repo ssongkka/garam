@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.garam.web.common.Ve_Id_Mapper">
+
+	<select id="get_Ve_Id_List"
+		resultType="com.garam.common.model.Ve_Id2_VO">
+
+		SELECT
+
+		vehicle_info.car_number,
+
+		ve_id.id
+
+		FROM
+
+		vehicle_info
+
+		LEFT
+		JOIN
+
+		ve_id
+
+		ON
+
+		vehicle_info.car_number = ve_id.car_number
+	</select>
+
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.garam.web.common.Calendar_Mapper">
+
+	<select id="get_Cal_Data"
+		parameterType="com.garam.common.model.para.Para2VO"
+		resultType="com.garam.common.model.Calendar_VO">
+
+		SELECT
+
+		no,
+		solar_Cal,
+		lunar_Cal,
+		season,
+		etc,
+		holiday,
+		anniversary,
+		event
+
+		FROM cal
+
+		WHERE
+
+		solar_Cal BETWEEN #{num1} AND #{num2}
+
+	</select>
+</mapper>
