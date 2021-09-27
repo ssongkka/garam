@@ -12,122 +12,144 @@
 
 		SELECT
 
-		car_number, vehicle, phone1
+		car_number,
+		vehicle,
+		company,
+		owner,
+		bus,
+		brand,
+		name,
+		grade,
+		fuel,
+		num,
+		color,
+		regist,
+		expire,
+		price,
+		special,
+		reg_d,
+		reg_add,
+		insu_d,
+		insu_add,
+		juk_d,
+		juk_add,
+		img1,
+		img2,
+		img3,
+		trash
 
-		FROM employee_info
+		FROM vehicle_info
+		
+		WHERE trash = 1
+
+		ORDER BY vehicle
 	</select>
 
 
 
-	<select id="get_Emp_Contents" parameterType="String"
+	<select id="get_Ve_Contents" parameterType="String"
 		resultType="com.garam.common.model.VehicleInfo_VO">
 
 		SELECT
 
-		id,
+		car_number,
+		vehicle,
 		company,
-		kind,
-		joind,
-		endD,
+		owner,
+		bus,
+		brand,
 		name,
-		gender,
-		birthday,
-		phone1,
-		phone2,
-		address,
-		garage,
-		bosu_M,
-		bobu_J,
-		drvL,
-		busL,
-		memo,
-		bank,
-		gye,
-		gyename,
-		base_M,
-		kuk_M,
-		gun_M,
-		go_M,
-		san_M,
-		img,
+		grade,
+		fuel,
+		num,
+		color,
+		regist,
+		expire,
+		price,
+		special,
+		reg_d,
+		reg_add,
+		insu_d,
+		insu_add,
+		juk_d,
+		juk_add,
+		img1,
+		img2,
+		img3,
 		trash
 
 		FROM
 
-		employee_info
+		vehicle_info
 
 		WHERE
 
-		id = #{id}
+		car_number = #{car_number}
 	</select>
 
 
 
-	<insert id="insert_Emp"
-		parameterType="com.garam.common.model.EmployeeInfo_VO">
+	<insert id="insert_Ve"
+		parameterType="com.garam.common.model.VehicleInfo_VO">
 
-		INSERT INTO employee_info
+		INSERT INTO vehicle_info
 
 		(
-		id,
+		car_number,
+		vehicle,
 		company,
-		kind,
-		joind,
-		endD,
+		owner,
+		bus,
+		brand,
 		name,
-		gender,
-		birthday,
-		phone1,
-		phone2,
-		address,
-		garage,
-		bosu_M,
-		bobu_J,
-		drvL,
-		busL,
-		memo,
-		bank,
-		gye,
-		gyename,
-		base_M,
-		kuk_M,
-		gun_M,
-		go_M,
-		san_M,
-		img,
+		grade,
+		fuel,
+		num,
+		color,
+		regist,
+		expire,
+		price,
+		special,
+		reg_d,
+		reg_add,
+		insu_d,
+		insu_add,
+		juk_d,
+		juk_add,
+		img1,
+		img2,
+		img3,
 		trash
 		)
 
 		VALUES
 
 		(
-		#{id},
+		#{car_number},
+		#{vehicle},
 		#{company},
-		#{kind},
-		#{joind},
-		#{endd},
+		#{owner},
+		#{bus},
+		#{brand},
 		#{name},
-		#{gender},
-		#{birthday},
-		#{phone1},
-		#{phone2},
-		#{address},
-		#{garage},
-		#{bosuM},
-		#{bobuJ},
-		#{drvl},
-		#{busl},
-		#{memo},
-		#{bank},
-		#{gye},
-		#{gyename},
-		#{baseM},
-		#{kukM},
-		#{gunM},
-		#{goM},
-		#{sanM},
-		#{img},
-		#{trash});
+		#{grade},
+		#{fuel},
+		#{num},
+		#{color},
+		#{regist},
+		#{expire},
+		#{price},
+		#{special},
+		#{reg_d},
+		#{reg_add},
+		#{insu_d},
+		#{insu_add},
+		#{juk_d},
+		#{juk_add},
+		#{img1},
+		#{img2},
+		#{img3},
+		#{trash},
 		)
 
 	</insert>
@@ -137,58 +159,51 @@
 	<update id="update_Emp"
 		parameterType="com.garam.common.model.EmployeeInfo_VO">
 
-		UPDATE employee_info
+		UPDATE vehicle_info
 
 		SET
 
-		id = #{id},
+		car_number = #{car_number},
+		vehicle = #{vehicle},
 		company = #{company},
-		kind = #{kind},
-		joind = #{joind},
-		endD =
-		#{endd},
+		owner = #{owner},
+		bus =
+		#{bus},
+		brand = #{brand},
 		name = #{name},
-		gender =
-		#{gender},
-		birthday = #{birthday},
-		phone1 = #{phone1},
-		phone2 =
-		#{phone2},
-		address = #{address},
-		garage =
-		#{garage},
-		bosu_M = #{bosuM},
-		bobu_J = #{bobuJ},
-		drvL = #{drvl},
-		busL =
-		#{busl},
-		memo = #{memo},
-		bank =
-		#{bank},
-		gye = #{gye},
-		gyename =
-		#{gyename},
-		base_M = #{baseM},
-		kuk_M =
-		#{kukM},
-		gun_M = #{gunM},
-		go_M =
-		#{goM},
-		san_M = #{sanM},
-		img = #{img},
-		trash = #{trash}
-
-		WHERE id = #{id};
+		grade = #{grade},
+		fuel =
+		#{fuel},
+		num = #{num},
+		color = #{color},
+		regist = NOW(),
+		expire =
+		NOW(),
+		price = 1,
+		special = #{special},
+		reg_d = NOW(),
+		reg_add = #{reg_add},
+		insu_d = NOW(),
+		insu_add = #{insu_add},
+		juk_d = #{juk_d},
+		juk_add
+		=
+		#{juk_add},
+		img1 = #{img1},
+		img2 = #{img2},
+		img3 = #{img3},
+		trash = 1
+		WHERE
+		car_number = #{car_number};
 
 	</update>
 
 
 
-	<delete id="delete_Emp" parameterType="String">
+	<delete id="delete_Ve" parameterType="String">
 
-		DELETE FROM employee_info
-
-		WHERE id = #{id};
+		DELETE FROM vehicle_info
+		WHERE car_number = #{car_number};
 
 	</delete>
 

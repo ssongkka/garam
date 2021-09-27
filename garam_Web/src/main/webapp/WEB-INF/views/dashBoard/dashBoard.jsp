@@ -1,8 +1,9 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
-<%@ page import="com.garam.common.util.cal_Util"%>
+<%@ page import="com.garam.common.util.save_Map"%>
 
 
 <!DOCTYPE html>
@@ -336,18 +337,18 @@
 								</thead>
 								<tbody>
 									<c:choose>
-										<c:when test="${empty veidList}">
+										<c:when test="${empty veList}">
 											<tr>
 												<td colspan="5" align="center">데이터가 없습니다.</td>
 											</tr>
 										</c:when>
-										<c:when test="${!empty veidList}">
-											<c:forEach var="veidList" items="${veidList}">
+										<c:when test="${!empty veList}">
+											<c:forEach var="veList" items="${veList}">
 												<tr style="cursor: pointer; color: #blue;" data-toggle="aaa"
 													data-target="#aaa">
 													<td align="center"><c:out
-															value="${veidList.car_number}" /></td>
-													<td align="center"><c:out value="${veidList.id}" /></td>
+															value="${veList.vehicle}" /></td>
+													<td align="center"><c:out value="${veList.name}" /></td>
 												</tr>
 											</c:forEach>
 										</c:when>

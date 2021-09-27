@@ -15,6 +15,8 @@
 		id, name, phone1
 
 		FROM employee_info
+		
+		WHERE trash = 1
 	</select>
 
 
