@@ -1,6 +1,6 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 <%@ page import="com.garam.common.util.save_Map"%>
@@ -9,7 +9,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/common/css/dashBoard.css">
@@ -45,9 +45,9 @@
 									d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" /></svg>
 						</div>
 						<div class="dash-cal-h-item dash-cal-h-item4">
-							<button type="button" class="btn btn-primary btn-xs" id="btnYesD">¾îÁ¦</button>
-							<button type="button" class="btn btn-default btn-xs" id="btnToD">¿À´Ã</button>
-							<button type="button" class="btn btn-default btn-xs" id="btnTomD">³»ÀÏ</button>
+							<button type="button" class="btn btn-primary btn-xs" id="btnYesD">ì–´ì œ</button>
+							<button type="button" class="btn btn-default btn-xs" id="btnToD">ì˜¤ëŠ˜</button>
+							<button type="button" class="btn btn-default btn-xs" id="btnTomD">ë‚´ì¼</button>
 						</div>
 					</div>
 					<div class="dash-cal-con" id="dash-cal-contents"></div>
@@ -56,7 +56,7 @@
 					<div class="dash-2">
 						<div class="dash-2-item dash-2-item1">
 							<blockquote>
-								<p id="bigDay">2021³â 09¿ù 02ÀÏ</p>
+								<p id="bigDay">2021ë…„ 09ì›” 02ì¼</p>
 								<footer>
 									<cite title="Source Title" id="cal1"></cite>
 								</footer>
@@ -72,21 +72,21 @@
 				<div class="item_Main" style="padding: 0px">
 					<div class="dash-3">
 						<div class="dash-3-item card-song">
-							<div class="dash-3-item-1 card-title">´ë Çü</div>
+							<div class="dash-3-item-1 card-title">ëŒ€ í˜•</div>
 							<div class="dash-3-item-2" id="dash-45-u">
 								<strong id="dash-45-u">35</strong>
 							</div>
 							<div class="dash-3-item-3" id="dash-45-d">35 / 35 / 35</div>
 						</div>
 						<div class="dash-3-item card-song">
-							<div class="dash-3-item-1 card-title">Áß Çü</div>
+							<div class="dash-3-item-1 card-title">ì¤‘ í˜•</div>
 							<div class="dash-3-item-2">
 								<strong id="dash-25-u">35</strong>
 							</div>
 							<div class="dash-3-item-3" id="dash-25-d">35 / 35 / 35</div>
 						</div>
 						<div class="dash-3-item card-song">
-							<div class="dash-3-item-1 card-title">¿ì µî</div>
+							<div class="dash-3-item-1 card-title">ìš° ë“±</div>
 							<div class="dash-3-item-2" id="dash-28-u">
 								<strong id="dash-28-u">35</strong>
 							</div>
@@ -166,23 +166,23 @@
 				</div>
 				<div class="item_Main card-song" style="padding: 0px">
 					<div class="dash-5">
-						<div class="dash-5-item-1 card-title">¿î Çà Á¤ º¸</div>
+						<div class="dash-5-item-1 card-title">ìš´ í–‰ ì • ë³´</div>
 						<div role="tabpanel" style="margin-top: 0.3rem">
 							<!-- Nav tabs -->
 							<ul class="nav nav-pills nav-justified dash-5-item-1-main"
 								role="tablist">
 								<li role="presentation" class="active dash-5-item-1-1"><a
 									href="#all" aria-controls="all" role="tab" data-toggle="tab"
-									style="border-radius: 0px">ÀüÃ¼</a></li>
+									style="border-radius: 0px">ì „ì²´</a></li>
 								<li role="presentation" class="dash-5-item-1-1"><a
 									href="#school" aria-controls="school" role="tab"
-									data-toggle="tab" style="border-radius: 0px">ÇÐ»ý´ÜÃ¼</a></li>
+									data-toggle="tab" style="border-radius: 0px">í•™ìƒë‹¨ì²´</a></li>
 								<li role="presentation" class="dash-5-item-1-1"><a
 									href="#nomal" aria-controls="nomal" role="tab"
-									data-toggle="tab" style="border-radius: 0px">ÀÏ¹Ý</a></li>
+									data-toggle="tab" style="border-radius: 0px">ì¼ë°˜</a></li>
 								<li role="presentation" class="dash-5-item-1-1"><a
 									href="#days" aria-controls="days" role="tab" data-toggle="tab"
-									style="border-radius: 0px">Á¤±â¿îÇà</a></li>
+									style="border-radius: 0px">ì •ê¸°ìš´í–‰</a></li>
 							</ul>
 
 							<!-- Tab panes -->
@@ -193,9 +193,9 @@
 										<thead>
 											<tr>
 												<th>NO</th>
-												<th>¿¹¾à½ÅÃ»ÀÚ</th>
-												<th>´ë¼ö</th>
-												<th>¹èÂ÷</th>
+												<th>ì˜ˆì•½ì‹ ì²­ìž</th>
+												<th>ëŒ€ìˆ˜</th>
+												<th>ë°°ì°¨</th>
 											</tr>
 										</thead>
 
@@ -231,9 +231,9 @@
 										</tbody>
 									</table>
 								</div>
-								<div role="tabpanel" class="tab-pane" id="school">ÇÐ»ý´ÜÃ¼</div>
-								<div role="tabpanel" class="tab-pane" id="nomal">ÀÏ¹Ý</div>
-								<div role="tabpanel" class="tab-pane" id="days">Á¤±â¿îÇà</div>
+								<div role="tabpanel" class="tab-pane" id="school">í•™ìƒë‹¨ì²´</div>
+								<div role="tabpanel" class="tab-pane" id="nomal">ì¼ë°˜</div>
+								<div role="tabpanel" class="tab-pane" id="days">ì •ê¸°ìš´í–‰</div>
 							</div>
 
 						</div>
@@ -242,12 +242,12 @@
 				<div class="item_Main card-song" style="padding: 0px">
 					<div class="dash-6">
 						<div class="dash-6-item-1 card-title" data-toggle="tooltip"
-							title="" data-original-title="Default tooltip">½Â ¹« ¿ø</div>
+							title="" data-original-title="Default tooltip">ìŠ¹ ë¬´ ì›</div>
 						<div class="dash-6-item-2"
 							style="height: 40px; max-height: 40px; margin-top: 0.3rem;">
 							<div class="in3">
 								<input type="search" class="form-control input-sm"
-									placeholder="°Ë   »ö">
+									placeholder="ê²€   ìƒ‰">
 							</div>
 						</div>
 						<div class="dash-6-item-3">
@@ -260,15 +260,15 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th style="text-align: center">Â÷·®</th>
-										<th style="text-align: center">¿¬¶ôÃ³</th>
+										<th style="text-align: center">ì°¨ëŸ‰</th>
+										<th style="text-align: center">ì—°ë½ì²˜</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:choose>
 										<c:when test="${empty empList}">
 											<tr>
-												<td colspan="5" align="center">µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.</td>
+												<td colspan="5" align="center">ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.</td>
 											</tr>
 										</c:when>
 										<c:when test="${!empty empList}">
@@ -302,7 +302,7 @@
 										<div class="modal-body" id="aaa">...</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
-												data-dismiss="modal">´Ý ±â</button>
+												data-dismiss="modal">ë‹« ê¸°</button>
 										</div>
 									</div>
 								</div>
@@ -313,12 +313,12 @@
 				<div class="item_Main card-song" style="padding: 0px">
 					<div class="dash-6">
 						<div class="dash-6-item-1 card-title" data-toggle="tooltip"
-							title="" data-original-title="Default tooltip">Â÷ ·®</div>
+							title="" data-original-title="Default tooltip">ì°¨ ëŸ‰</div>
 						<div class="dash-6-item-2"
 							style="height: 40px; max-height: 40px; margin-top: 0.3rem;">
 							<div class="in3">
 								<input type="search" class="form-control input-sm"
-									placeholder="°Ë   »ö">
+									placeholder="ê²€   ìƒ‰">
 							</div>
 						</div>
 						<div class="dash-6-item-3">
@@ -331,23 +331,22 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th style="text-align: center">Â÷·®</th>
-										<th style="text-align: center">¿¬¶ôÃ³</th>
+										<th style="text-align: center">ì°¨ëŸ‰</th>
+										<th style="text-align: center">ì—°ë½ì²˜</th>
 									</tr>
 								</thead>
 								<tbody>
 									<c:choose>
 										<c:when test="${empty veList}">
 											<tr>
-												<td colspan="5" align="center">µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.</td>
+												<td colspan="5" align="center">ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.</td>
 											</tr>
 										</c:when>
 										<c:when test="${!empty veList}">
 											<c:forEach var="veList" items="${veList}">
 												<tr style="cursor: pointer; color: #blue;" data-toggle="aaa"
 													data-target="#aaa">
-													<td align="center"><c:out
-															value="${veList.vehicle}" /></td>
+													<td align="center"><c:out value="${veList.vehicle}" /></td>
 													<td align="center"><c:out value="${veList.name}" /></td>
 												</tr>
 											</c:forEach>
@@ -367,7 +366,7 @@
 							<!-- 										</div> -->
 							<!-- 										<div class="modal-body" id="aaa">...</div> -->
 							<!-- 										<div class="modal-footer"> -->
-							<!-- 											<button type="button" class="btn btn-default" data-dismiss="modal">´Ý ±â</button> -->
+							<!-- 											<button type="button" class="btn btn-default" data-dismiss="modal">ë‹« ê¸°</button> -->
 							<!-- 										</div> -->
 							<!-- 									</div> -->
 							<!-- 								</div> -->
@@ -491,49 +490,49 @@
 			success : function(r) {
 
 				if (r.length < 1) {
-					htmls = '<div>¾øÀ½</div>';
+					htmls = '<div>ì—†ìŒ</div>';
 				} else {
 					htmls = '<div class="emp-card-main card-song">'
 							+ '<div class="emp-card-item">'
 							+ '<div class="card1">'
 							+ '<div class="card1-item">2</div>'
-							+ '<div class="card1-item">ÀÌ¸§</div>'
+							+ '<div class="card1-item">ì´ë¦„</div>'
 							+ '<div class="card1-item">'
 							+ r[0].name
 							+ '</div>'
-							+ '<div class="card1-item">»ý³â¿ùÀÏ</div>'
+							+ '<div class="card1-item">ìƒë…„ì›”ì¼</div>'
 							+ '<div class="card1-item">'
 							+ r[0].birthday
 							+ '</div>'
-							+ '<div class="card1-item">¼Ò¼Ó</div>'
+							+ '<div class="card1-item">ì†Œì†</div>'
 							+ '<div class="card1-item">'
 							+ r[0].company
 							+ '</div>'
-							+ '<div class="card1-item">±¸ºÐ</div>'
+							+ '<div class="card1-item">êµ¬ë¶„</div>'
 							+ '<div class="card1-item">'
 							+ r[0].kind
 							+ '</div>'
-							+ '<div class="card1-item">¿¬¶ôÃ³</div>'
+							+ '<div class="card1-item">ì—°ë½ì²˜</div>'
 							+ '<div class="card1-item">'
 							+ r[0].phone1
 							+ '</div>'
-							+ '<div class="card1-item">ºñ»ó¿¬¶ôÃ³</div>'
+							+ '<div class="card1-item">ë¹„ìƒì—°ë½ì²˜</div>'
 							+ '<div class="card1-item">'
 							+ r[0].phone2
 							+ '</div>'
-							+ '<div class="card1-item">ÀÔ»çÀÏ</div>'
+							+ '<div class="card1-item">ìž…ì‚¬ì¼</div>'
 							+ '<div class="card1-item">'
 							+ r[0].joind
 							+ '</div>'
-							+ '<div class="card1-item">Åð»çÀÏ</div>'
+							+ '<div class="card1-item">í‡´ì‚¬ì¼</div>'
 							+ '<div class="card1-item">'
 							+ r[0].endD
 							+ '</div>'
-							+ '<div class="card1-item">ÁÖ¼Ò</div>'
+							+ '<div class="card1-item">ì£¼ì†Œ</div>'
 							+ '<div class="card1-item card1-item-ex" >'
 							+ r[0].address
 							+ '</div>'
-							+ '<div class="card1-item">Â÷°íÁö</div>'
+							+ '<div class="card1-item">ì°¨ê³ ì§€</div>'
 							+ '<div class="card1-item card1-item-ex">'
 							+ r[0].garage
 							+ '</div>'

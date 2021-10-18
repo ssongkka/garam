@@ -1,10 +1,10 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
 blockquote {
-	padding: 10px 20px;
+	padding: 1.2rem 1.6rem;
 	margin: 0px;
-	font-size: 22px;
-	border-left: 5px solid #eee;
+	font-size: 2.3rem;
+	border-left: .3rem solid #eee;
 }
 
 blockquote .small, blockquote footer, blockquote small {
@@ -15,7 +15,7 @@ blockquote .small, blockquote footer, blockquote small {
 }
 
 .nav {
-	font-size: 14px;
+	font-size: 1.5rem;
 	padding: 0px;
 }
 
@@ -29,6 +29,6 @@ blockquote .small, blockquote footer, blockquote small {
 }
 
 .table {
-	font-size: 12px;
+	font-size: 1.3rem;
 	background-color: #fff;
 }

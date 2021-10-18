@@ -185,7 +185,7 @@ function setCaldays(day) {
 					$(id).empty();
 
 					if (r[i].holiday == null) {
-						$(id).prepend("");
+						$(id).prepend("-");
 					} else {
 						$(id).prepend(r[i].holiday);
 						$(id2).css('color', sun_C);
@@ -261,5 +261,9 @@ function getDayOfWeek(num) {
 			rtn = "일요일";
 			return rtn;
 	}
+}
+
+function getRsvt() {
+
 }
 

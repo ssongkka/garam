@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/common/css/login.css">
@@ -22,11 +22,11 @@
 			<img
 				src="${pageContext.request.contextPath}/resources/common/img/img1.png"
 				alt="My Image" style="margin-left: -80px;">
-			<h2 class="">·Î±×ÀÎ ÇØÁÖ¼¼¿ä.</h2>
-			<input type="text" id="id" class="form-control" placeholder="¾ÆÀÌµğ"
+			<h2 class="">ë¡œê·¸ì¸ í•´ì£¼ì„¸ìš”.</h2>
+			<input type="text" id="id" class="form-control" placeholder="ì•„ì´ë””"
 				autofocus>
 			<input type="password" id="pw" class="form-control"
-				placeholder="ºñ¹Ğ¹øÈ£">
+				placeholder="ë¹„ë°€ë²ˆí˜¸">
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
 				in</button>
 		</form:form>

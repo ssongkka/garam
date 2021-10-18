@@ -4,4 +4,17 @@
     PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.garam.web.dashboard.dashboard_Rsvt"></mapper>
+<mapper namespace="com.garam.web.dashboard.dashboard_Rsvt">
+	<select id="get_Emp_List"
+		resultType="com.garam.common.model.EmployeeList_VO">
+
+		SELECT
+
+		id, name, phone1
+
+		FROM employee_info
+
+		WHERE trash = 1
+	</select>
+</mapper>
+
