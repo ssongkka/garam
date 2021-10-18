@@ -19,9 +19,23 @@
 		WHERE trash = 1
 
 		ORDER BY name
+
+		LIMIT #{startList}, #{listSize}
+
 	</select>
 
+	<select id="get_Emp_List_Cnt" resultType="int">
 
+		SELECT
+
+		count(*) as
+		listCnt
+
+		FROM
+
+		employee_info
+
+	</select>
 
 	<select id="get_Emp_Contents" parameterType="String"
 		resultType="com.garam.common.model.EmployeeInfo_VO">

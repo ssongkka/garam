@@ -178,6 +178,14 @@ aside {
 	margin-left: auto;
 }
 
+.dash-6 table {
+	margin-top: 0px;
+}
+
+.pagination {
+	margin: 0px;
+}
+
 /* aside */
 .side-R {
 	display: flex;

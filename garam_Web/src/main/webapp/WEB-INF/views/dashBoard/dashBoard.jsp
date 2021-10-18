@@ -58,15 +58,15 @@
 							<blockquote>
 								<p id="bigDay">2021년 09월 02일</p>
 								<footer>
-									<cite title="Source Title" id="cal1"></cite>
+									<cite title="Source Title" id="cal1">&nbsp;</cite>
 								</footer>
 							</blockquote>
 						</div>
-						<div class="dash-2-item dash-2-item1" id="cal2"></div>
-						<div class="dash-2-item dash-2-item2" id="cal3"></div>
-						<div class="dash-2-item dash-2-item3" id="cal4"></div>
-						<div class="dash-2-item dash-2-item4" id="cal5"></div>
-						<div class="dash-2-item dash-2-item5" id="cal6"></div>
+						<div class="dash-2-item dash-2-item1" id="cal2">&nbsp;</div>
+						<div class="dash-2-item dash-2-item2" id="cal3">&nbsp;</div>
+						<div class="dash-2-item dash-2-item3" id="cal4">&nbsp;</div>
+						<div class="dash-2-item dash-2-item4" id="cal5">&nbsp;</div>
+						<div class="dash-2-item dash-2-item5" id="cal6">&nbsp;</div>
 					</div>
 				</div>
 				<div class="item_Main" style="padding: 0px">
@@ -100,7 +100,7 @@
 						<div class="dash-4-item-2">
 							<strong id="dash-day-0"></strong>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-0"></div>
+						<div class="dash-4-item-3" id="dash-hol-0">-</div>
 						<div class="dash-4-item-4" id="dash-bus-0">35 / 35 / 35</div>
 					</div>
 				</div>
@@ -110,7 +110,7 @@
 						<div class="dash-4-item-2">
 							<strong id="dash-day-1"></strong>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-1"></div>
+						<div class="dash-4-item-3" id="dash-hol-1">-</div>
 						<div class="dash-4-item-4" id="dash-bus-1">35 / 35 / 35</div>
 					</div>
 				</div>
@@ -120,7 +120,7 @@
 						<div class="dash-4-item-2">
 							<strong id="dash-day-2"></strong>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-2"></div>
+						<div class="dash-4-item-3" id="dash-hol-2">-</div>
 						<div class="dash-4-item-4" id="dash-bus-2">35 / 35 / 35</div>
 					</div>
 				</div>
@@ -130,7 +130,7 @@
 						<div class="dash-4-item-2">
 							<strong id="dash-day-3"></strong>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-3"></div>
+						<div class="dash-4-item-3" id="dash-hol-3">-</div>
 						<div class="dash-4-item-4" id="dash-bus-3">35 / 35 / 35</div>
 					</div>
 				</div>
@@ -140,7 +140,7 @@
 						<div class="dash-4-item-2">
 							<strong id="dash-day-4"></strong>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-4"></div>
+						<div class="dash-4-item-3" id="dash-hol-4">-</div>
 						<div class="dash-4-item-4" id="dash-bus-4">35 / 35 / 35</div>
 					</div>
 				</div>
@@ -150,7 +150,7 @@
 						<div class="dash-4-item-2">
 							<strong id="dash-day-5"></strong>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-5"></div>
+						<div class="dash-4-item-3" id="dash-hol-5">-</div>
 						<div class="dash-4-item-4" id="dash-bus-5">35 / 35 / 35</div>
 					</div>
 				</div>
@@ -160,7 +160,7 @@
 						<div class="dash-4-item-2">
 							<strong id="dash-day-6"></strong>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-6"></div>
+						<div class="dash-4-item-3" id="dash-hol-6">-</div>
 						<div class="dash-4-item-4" id="dash-bus-6">35 / 35 / 35</div>
 					</div>
 				</div>
@@ -286,6 +286,36 @@
 									</c:choose>
 								</tbody>
 							</table>
+							<!-- pagination{s} -->
+
+							<div id="paginationBox">
+								<ul class="pagination pagination-sm">
+									<c:if test="${pagination.prev}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_prev_Emp('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+									</c:if>
+
+									<c:forEach begin="${pagination.startPage}"
+										end="${pagination.endPage}" var="idx">
+
+										<li
+											class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+											class="page-link" href="#"
+											onClick="fn_pagination_Emp('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+												${idx} </a></li>
+
+									</c:forEach>
+
+									<c:if test="${pagination.next}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_next_Emp('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+									</c:if>
+								</ul>
+							</div>
+							<!-- pagination{e} -->
+
+
+
 							<!-- Modal -->
 							<div class="modal fade bs-example-modal-lg" id="modal-emp"
 								tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
@@ -543,6 +573,56 @@
 				$("#aaa").html(htmls);
 			}
 		})
+	}
+
+	//이전 버튼 이벤트
+
+	function fn_prev_Emp(page, range, rangeSize) {
+
+		var page = ((range - 2) * rangeSize) + 1;
+
+		var range = range - 1;
+
+		var url = "${pageContext.request.contextPath}/dashBoard";
+
+		url = url + "?page=" + page;
+
+		url = url + "&range=" + range;
+
+		location.href = url;
+
+	}
+
+	//페이지 번호 클릭
+
+	function fn_pagination_Emp(page, range, rangeSize, searchType, keyword) {
+
+		var url = "${pageContext.request.contextPath}/dashBoard";
+
+		url = url + "?page=" + page;
+
+		url = url + "&range=" + range;
+
+		location.href = url;
+
+	}
+
+	//다음 버튼 이벤트
+
+	function fn_next_Emp(page, range, rangeSize) {
+
+		var page = parseInt((range * rangeSize)) + 1;
+
+		var range = parseInt(range) + 1;
+
+		var url = "${pageContext.request.contextPath}/dashBoard";
+
+		url = url + "?page=" + page;
+
+		url = url + "&range=" + range;
+
+		location.href = url;
+
 	}
 </script>
 

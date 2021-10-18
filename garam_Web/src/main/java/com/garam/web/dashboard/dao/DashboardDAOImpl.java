@@ -13,6 +13,7 @@ import com.garam.common.model.EmployeeList_VO;
 import com.garam.common.model.Ve_Id2_VO;
 import com.garam.common.model.VehicleInfo_VO;
 import com.garam.common.model.para.Para2VO;
+import com.garam.common.util.Pagination;
 
 @Repository
 public class DashboardDAOImpl implements DashboardDAO {
@@ -21,8 +22,8 @@ public class DashboardDAOImpl implements DashboardDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<EmployeeList_VO> getEmpList() throws Exception {
-		return sqlSession.selectList("com.garam.web.common.EmployeeInfo_Mapper.get_Emp_List");
+	public List<EmployeeList_VO> getEmpList(Pagination pagination) throws Exception {
+		return sqlSession.selectList("com.garam.web.common.EmployeeInfo_Mapper.get_Emp_List", pagination);
 	}
 
 	@Override
@@ -45,4 +46,8 @@ public class DashboardDAOImpl implements DashboardDAO {
 		return sqlSession.selectList("com.garam.web.common.Calendar_Mapper.get_Cal_Data", para2vo);
 	}
 
+	@Override
+	public int getEmpListCnt() throws Exception {
+		return sqlSession.selectOne("com.garam.web.common.EmployeeInfo_Mapper.get_Emp_List_Cnt");
+	}
 }

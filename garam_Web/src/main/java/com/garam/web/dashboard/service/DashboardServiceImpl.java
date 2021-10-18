@@ -12,6 +12,7 @@ import com.garam.common.model.EmployeeList_VO;
 import com.garam.common.model.Ve_Id2_VO;
 import com.garam.common.model.VehicleInfo_VO;
 import com.garam.common.model.para.Para2VO;
+import com.garam.common.util.Pagination;
 import com.garam.web.dashboard.dao.DashboardDAO;
 
 @Service
@@ -21,8 +22,8 @@ public class DashboardServiceImpl implements DashboardService {
 	private DashboardDAO dash_Dao;
 
 	@Override
-	public List<EmployeeList_VO> getEmpList() throws Exception {
-		return dash_Dao.getEmpList();
+	public List<EmployeeList_VO> getEmpList(Pagination pagination) throws Exception {
+		return dash_Dao.getEmpList(pagination);
 	}
 
 	@Override
@@ -43,6 +44,11 @@ public class DashboardServiceImpl implements DashboardService {
 	@Override
 	public List<Calendar_VO> getCalList(Para2VO para2vo) throws Exception {
 		return dash_Dao.getCalList(para2vo);
+	}
+
+	@Override
+	public int getEmpListCnt() throws Exception {
+		return dash_Dao.getEmpListCnt();
 	}
 
 }
