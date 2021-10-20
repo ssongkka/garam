@@ -1,8 +1,6 @@
 package com.garam.common.model.para;
 
-import java.util.Iterator;
-
-public class Para2VO {
+public class ParaStr2VO {
 	String num1;
 	String num2;
 

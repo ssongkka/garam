@@ -83,9 +83,6 @@ function setMidDay(day) {
 			var day = new Date(day.setDate(day.getDate() + 1));
 		}
 
-
-		console.log("asddd  " + day.toLocaleDateString());
-
 		$(id).empty();
 		$(id).prepend(day.getDate());
 	}
@@ -127,26 +124,17 @@ function setCaldays(day) {
 	};
 
 	var tmp_Arr = day.split("-");
-	console.log(tmp_Arr);
 
 	var tmp_Day = new Date(tmp_Arr[0], parseInt(tmp_Arr[1] - 1), tmp_Arr[2]);
-	console.log(tmp_Arr[0]);
-	console.log(tmp_Arr[1] + 1);
-	console.log(tmp_Arr[2]);
-	console.log(tmp_Day.toLocaleDateString());
 
 	var tmp_Day2 = new Date(tmp_Day.setDate(tmp_Day.getDate() + 7));
 
 	var day7 = tmp_Day2.getFullYear() + "-" + (parseInt(tmp_Day2.getMonth()) + 1) + "-" + tmp_Day2.getDate();
-	console.log("123123   " + day);
-	console.log("123333   " + day7);
 
 	var paramData = JSON.stringify({
 		"num1": day,
 		"num2": day7
 	});
-
-	console.log(paramData);
 
 	var cal1 = "";
 	var cal2 = "";
@@ -164,13 +152,8 @@ function setCaldays(day) {
 
 
 		success: function(r) {
-			console.log(r[0].lunar_Cal);
-			console.log(r[0].season);
-			console.log(r[0].etc);
-			console.log(r[0].holiday);
-			console.log(r[0].anniversary);
-			console.log(r[0].event);
-
+			console.log("aa   " + r.length);
+			console.log("aa   " + r);
 			if (r.length > 0) {
 				cal1 = "음력 " + r[0].lunar_Cal;
 				cal2 = '<span>' + r[0].event + '</span>' + '<span style = "color : ' + sun_C + ';">' + r[0].holiday
@@ -181,7 +164,6 @@ function setCaldays(day) {
 					var id = "#dash-hol-" + String(i);
 					var id2 = "#dash-week-" + String(i);
 
-					console.log(r[i].holiday);
 					$(id).empty();
 
 					if (r[i].holiday == null) {
@@ -192,13 +174,6 @@ function setCaldays(day) {
 					}
 				}
 			}
-
-			console.log(cal1);
-			console.log(cal2);
-			console.log(cal3);
-			console.log(cal4);
-			console.log(cal5);
-			console.log(cal6);
 
 			$("#cal1").html(cal1);
 			$("#cal2").html(cal2);

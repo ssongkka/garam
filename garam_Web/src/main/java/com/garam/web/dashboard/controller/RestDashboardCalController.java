@@ -12,21 +12,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.garam.common.model.Calendar_VO;
-import com.garam.common.model.para.Para2VO;
+import com.garam.common.model.para.ParaStr2VO;
 import com.garam.web.dashboard.service.DashboardService;
 
 @RestController
 @RequestMapping(value = "/dashCal")
-public class RestDashoboardCalController {
+public class RestDashboardCalController {
 
-	private static final Logger logger = LoggerFactory.getLogger(DashoboardController.class);
+	private static final Logger logger = LoggerFactory.getLogger(DashboardController.class);
 
 	@Inject
 	private DashboardService dashBoardService;
 
 	@RequestMapping(value = "/getCalList", method = { RequestMethod.POST })
-	public List<Calendar_VO> getEmpContents(@RequestBody Para2VO para2vo) throws Exception {
-		System.out.println(para2vo);
+	public List<Calendar_VO> getEmpContents(@RequestBody ParaStr2VO para2vo) throws Exception {
 		return dashBoardService.getCalList(para2vo);
 	}
 }

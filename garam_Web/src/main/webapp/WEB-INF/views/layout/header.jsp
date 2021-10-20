@@ -1,5 +1,7 @@
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!-- jQuery -->
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
 
 <!-- common CSS -->
 <link rel="stylesheet"

@@ -260,61 +260,13 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th style="text-align: center">차량</th>
+										<th style="text-align: center">이름</th>
 										<th style="text-align: center">연락처</th>
 									</tr>
 								</thead>
-								<tbody>
-									<c:choose>
-										<c:when test="${empty empList}">
-											<tr>
-												<td colspan="5" align="center">데이터가 없습니다.</td>
-											</tr>
-										</c:when>
-										<c:when test="${!empty empList}">
-											<c:forEach var="emp_List" items="${empList}">
-												<tr style="cursor: pointer; color: #blue;"
-													data-toggle="modal" data-target="#modal-emp"
-													onClick="fn_contentEmp('${emp_List.id}')">
-													<td align="center"><c:out value="${emp_List.name}" />
-													</td>
-													<td align="center"><c:out value="${emp_List.phone1}" />
-													</td>
-												</tr>
-											</c:forEach>
-										</c:when>
-									</c:choose>
-								</tbody>
+								<tbody id="tbEmp"></tbody>
 							</table>
-							<!-- pagination{s} -->
-
-							<div id="paginationBox">
-								<ul class="pagination pagination-sm">
-									<c:if test="${pagination.prev}">
-										<li class="page-item"><a class="page-link" href="#"
-											onClick="fn_prev_Emp('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
-									</c:if>
-
-									<c:forEach begin="${pagination.startPage}"
-										end="${pagination.endPage}" var="idx">
-
-										<li
-											class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-											class="page-link" href="#"
-											onClick="fn_pagination_Emp('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-												${idx} </a></li>
-
-									</c:forEach>
-
-									<c:if test="${pagination.next}">
-										<li class="page-item"><a class="page-link" href="#"
-											onClick="fn_next_Emp('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
-									</c:if>
-								</ul>
-							</div>
-							<!-- pagination{e} -->
-
-
+							<div id="paginationBoxEmp"></div>
 
 							<!-- Modal -->
 							<div class="modal fade bs-example-modal-lg" id="modal-emp"
@@ -329,7 +281,7 @@
 											</button>
 											<h4 class="modal-title" id="myModalLabel">Modal title</h4>
 										</div>
-										<div class="modal-body" id="aaa">...</div>
+										<div class="modal-body" id="modal-body-emp">...</div>
 										<div class="modal-footer">
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">닫 기</button>
@@ -337,6 +289,7 @@
 									</div>
 								</div>
 							</div>
+							<!-- Modal -->
 						</div>
 					</div>
 				</div>
@@ -365,265 +318,50 @@
 										<th style="text-align: center">연락처</th>
 									</tr>
 								</thead>
-								<tbody>
-									<c:choose>
-										<c:when test="${empty veList}">
-											<tr>
-												<td colspan="5" align="center">데이터가 없습니다.</td>
-											</tr>
-										</c:when>
-										<c:when test="${!empty veList}">
-											<c:forEach var="veList" items="${veList}">
-												<tr style="cursor: pointer; color: #blue;" data-toggle="aaa"
-													data-target="#aaa">
-													<td align="center"><c:out value="${veList.vehicle}" /></td>
-													<td align="center"><c:out value="${veList.name}" /></td>
-												</tr>
-											</c:forEach>
-										</c:when>
-									</c:choose>
-								</tbody>
+								<tbody id="tbVE"></tbody>
 							</table>
+							<div id="paginationBoxVE"></div>
 							<!-- Modal -->
-							<!-- 							<div class="modal fade bs-example-modal-lg" id="modal-emp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
-							<!-- 								<div class="modal-dialog modal-lg"> -->
-							<!-- 									<div class="modal-content"> -->
-							<!-- 										<div class="modal-header"> -->
-							<!-- 											<button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
-							<!-- 												<span aria-hidden="true">&times;</span> -->
-							<!-- 											</button> -->
-							<!-- 											<h4 class="modal-title" id="myModalLabel">Modal title</h4> -->
-							<!-- 										</div> -->
-							<!-- 										<div class="modal-body" id="aaa">...</div> -->
-							<!-- 										<div class="modal-footer"> -->
-							<!-- 											<button type="button" class="btn btn-default" data-dismiss="modal">닫 기</button> -->
-							<!-- 										</div> -->
-							<!-- 									</div> -->
-							<!-- 								</div> -->
-							<!-- 							</div> -->
+							<div class="modal fade bs-example-modal-lg" id="modal-VE"
+								tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog modal-lg">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+											<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+										</div>
+										<div class="modal-body" id="modal-body-ve">...</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">닫 기</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- Modal -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		<aside>
+		<div class="sidebar">
 			<div class="side-R">
 				<div class="side-R-item card-song"></div>
 				<div class="side-R-item card-song"></div>
 				<div class="side-R-item card-song"></div>
 			</div>
-		</aside>
+		</div>
 	</div>
 </body>
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/resources/common/js/calendarJS.js"></script>
-<script type="text/javascript">
-	$(document).ready(
-			function() {
-				var now_D = new Date();
-
-				var nowMonth = new Date(now_D.getFullYear(), now_D.getMonth(),
-						1);
-				var nowDay = new Date(now_D.getFullYear(), now_D.getMonth(),
-						now_D.getDate());
-
-				var id = setCalendar(nowMonth, nowDay);
-
-				setCalWhite(id);
-			});
-
-	$(document).on(
-			'click',
-			'#btnYesD',
-			function() {
-
-				var now_D = new Date();
-
-				var nowMonth = new Date(now_D.getFullYear(), now_D.getMonth(),
-						1);
-				var nowDay = new Date(now_D.getFullYear(), now_D.getMonth(),
-						now_D.getDate());
-				var day = new Date(nowDay.setDate(nowDay.getDate() - 1));
-
-				var id = setCalendar(nowMonth, day);
-
-				setCalWhite(id);
-			});
-
-	$(document).on(
-			'click',
-			'#btnToD',
-			function() {
-
-				var now_D = new Date();
-
-				var nowMonth = new Date(now_D.getFullYear(), now_D.getMonth(),
-						1);
-				var nowDay = new Date(now_D.getFullYear(), now_D.getMonth(),
-						now_D.getDate());
-
-				var id = setCalendar(nowMonth, nowDay);
-
-				setCalWhite(id);
-			});
-
-	$(document).on(
-			'click',
-			'#btnTomD',
-			function() {
-
-				var now_D = new Date();
-
-				var nowMonth = new Date(now_D.getFullYear(), now_D.getMonth(),
-						1);
-				var nowDay = new Date(now_D.getFullYear(), now_D.getMonth(),
-						now_D.getDate());
-				var day = new Date(nowDay.setDate(nowDay.getDate() + 1));
-
-				var id = setCalendar(nowMonth, day);
-
-				setCalWhite(id);
-			});
-
-	$(document).on('click', '#fnDownMonth', function() {
-
-		var now_D = fn_get_Year_Month();
-
-		var downMonth = new Date(now_D.setMonth(now_D.getMonth() - 1));
-
-		setCalendar(downMonth, null);
-	});
-
-	$(document).on('click', '#fnUpMonth', function() {
-
-		var now_D = fn_get_Year_Month();
-
-		var upMonth = new Date(now_D.setMonth(now_D.getMonth() + 1));
-
-		setCalendar(upMonth, null);
-	});
-
-	function fn_contentEmp(id) {
-		var url = "/dashEmp/getEmpcontents"
-		var paramData = {
-			"id" : id
-		};
-
-		var htmls = "";
-
-		$.ajax({
-			type : 'POST',
-			url : url,
-			data : paramData,
-
-			success : function(r) {
-
-				if (r.length < 1) {
-					htmls = '<div>없음</div>';
-				} else {
-					htmls = '<div class="emp-card-main card-song">'
-							+ '<div class="emp-card-item">'
-							+ '<div class="card1">'
-							+ '<div class="card1-item">2</div>'
-							+ '<div class="card1-item">이름</div>'
-							+ '<div class="card1-item">'
-							+ r[0].name
-							+ '</div>'
-							+ '<div class="card1-item">생년월일</div>'
-							+ '<div class="card1-item">'
-							+ r[0].birthday
-							+ '</div>'
-							+ '<div class="card1-item">소속</div>'
-							+ '<div class="card1-item">'
-							+ r[0].company
-							+ '</div>'
-							+ '<div class="card1-item">구분</div>'
-							+ '<div class="card1-item">'
-							+ r[0].kind
-							+ '</div>'
-							+ '<div class="card1-item">연락처</div>'
-							+ '<div class="card1-item">'
-							+ r[0].phone1
-							+ '</div>'
-							+ '<div class="card1-item">비상연락처</div>'
-							+ '<div class="card1-item">'
-							+ r[0].phone2
-							+ '</div>'
-							+ '<div class="card1-item">입사일</div>'
-							+ '<div class="card1-item">'
-							+ r[0].joind
-							+ '</div>'
-							+ '<div class="card1-item">퇴사일</div>'
-							+ '<div class="card1-item">'
-							+ r[0].endD
-							+ '</div>'
-							+ '<div class="card1-item">주소</div>'
-							+ '<div class="card1-item card1-item-ex" >'
-							+ r[0].address
-							+ '</div>'
-							+ '<div class="card1-item">차고지</div>'
-							+ '<div class="card1-item card1-item-ex">'
-							+ r[0].garage
-							+ '</div>'
-							+ '</div>'
-							+ '</div>'
-							+ '</div>'
-				}
-				$("#aaa").html(htmls);
-			}
-		})
-	}
-
-	//이전 버튼 이벤트
-
-	function fn_prev_Emp(page, range, rangeSize) {
-
-		var page = ((range - 2) * rangeSize) + 1;
-
-		var range = range - 1;
-
-		var url = "${pageContext.request.contextPath}/dashBoard";
-
-		url = url + "?page=" + page;
-
-		url = url + "&range=" + range;
-
-		location.href = url;
-
-	}
-
-	//페이지 번호 클릭
-
-	function fn_pagination_Emp(page, range, rangeSize, searchType, keyword) {
-
-		var url = "${pageContext.request.contextPath}/dashBoard";
-
-		url = url + "?page=" + page;
-
-		url = url + "&range=" + range;
-
-		location.href = url;
-
-	}
-
-	//다음 버튼 이벤트
-
-	function fn_next_Emp(page, range, rangeSize) {
-
-		var page = parseInt((range * rangeSize)) + 1;
-
-		var range = parseInt(range) + 1;
-
-		var url = "${pageContext.request.contextPath}/dashBoard";
-
-		url = url + "?page=" + page;
-
-		url = url + "&range=" + range;
-
-		location.href = url;
-
-	}
-</script>
-
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/common/js/Pagination.js"></script>
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/common/js/dashboardJS/dashboard.js"></script>
 </html>

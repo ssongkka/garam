@@ -7,47 +7,42 @@
 
 <mapper namespace="com.garam.web.common.VehicleInfo_Mapper">
 
-	<select id="get_Ve_List"
-		resultType="com.garam.common.model.VehicleInfo_VO">
+	<select id="get_VE_List"
+		parameterType="com.garam.common.model.para.ParaInt2VO"
+		resultType="com.garam.common.model.VehicleList_VO">
 
 		SELECT
 
-		car_number,
-		vehicle,
-		company,
-		owner,
-		bus,
-		brand,
-		name,
-		grade,
-		fuel,
-		num,
-		color,
-		regist,
-		expire,
-		price,
-		special,
-		reg_d,
-		reg_add,
-		insu_d,
-		insu_add,
-		juk_d,
-		juk_add,
-		img1,
-		img2,
-		img3,
-		trash
+		car_number, vehicle, grade
 
 		FROM vehicle_info
-		
-		WHERE trash = 1
+
+		WHERE
+		trash = 1
 
 		ORDER BY vehicle
+
+		LIMIT #{num1}, #{num2}
+	</select>
+
+	<select id="get_VE_List_Cnt" resultType="int">
+
+		SELECT
+
+		count(*) as
+		listCnt
+
+		FROM
+
+		vehicle_info
+
+		WHERE trash = 1
+
 	</select>
 
 
 
-	<select id="get_Ve_Contents" parameterType="String"
+	<select id="get_VE_Contents" parameterType="String"
 		resultType="com.garam.common.model.VehicleInfo_VO">
 
 		SELECT
@@ -89,7 +84,7 @@
 
 
 
-	<insert id="insert_Ve"
+	<insert id="insert_VE"
 		parameterType="com.garam.common.model.VehicleInfo_VO">
 
 		INSERT INTO vehicle_info
@@ -156,8 +151,8 @@
 
 
 
-	<update id="update_Emp"
-		parameterType="com.garam.common.model.EmployeeInfo_VO">
+	<update id="update_VE"
+		parameterType="com.garam.common.model.VehicleInfo_VO">
 
 		UPDATE vehicle_info
 
@@ -200,7 +195,7 @@
 
 
 
-	<delete id="delete_Ve" parameterType="String">
+	<delete id="delete_VE" parameterType="String">
 
 		DELETE FROM vehicle_info
 		WHERE car_number = #{car_number};

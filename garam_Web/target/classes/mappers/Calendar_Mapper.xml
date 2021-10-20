@@ -8,7 +8,7 @@
 <mapper namespace="com.garam.web.common.Calendar_Mapper">
 
 	<select id="get_Cal_Data"
-		parameterType="com.garam.common.model.para.Para2VO"
+		parameterType="com.garam.common.model.para.ParaStr2VO"
 		resultType="com.garam.common.model.Calendar_VO">
 
 		SELECT

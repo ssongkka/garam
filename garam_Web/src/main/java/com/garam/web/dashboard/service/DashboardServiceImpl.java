@@ -9,10 +9,12 @@ import org.springframework.stereotype.Service;
 import com.garam.common.model.Calendar_VO;
 import com.garam.common.model.EmployeeInfo_VO;
 import com.garam.common.model.EmployeeList_VO;
+import com.garam.common.model.Pagination;
 import com.garam.common.model.Ve_Id2_VO;
 import com.garam.common.model.VehicleInfo_VO;
-import com.garam.common.model.para.Para2VO;
-import com.garam.common.util.Pagination;
+import com.garam.common.model.VehicleList_VO;
+import com.garam.common.model.para.ParaInt2VO;
+import com.garam.common.model.para.ParaStr2VO;
 import com.garam.web.dashboard.dao.DashboardDAO;
 
 @Service
@@ -22,13 +24,13 @@ public class DashboardServiceImpl implements DashboardService {
 	private DashboardDAO dash_Dao;
 
 	@Override
-	public List<EmployeeList_VO> getEmpList(Pagination pagination) throws Exception {
-		return dash_Dao.getEmpList(pagination);
+	public List<EmployeeList_VO> getEmpList(ParaInt2VO paraint2VO) throws Exception {
+		return dash_Dao.getEmpList(paraint2VO);
 	}
 
 	@Override
-	public List<VehicleInfo_VO> getVeList() throws Exception {
-		return dash_Dao.getVeList();
+	public List<VehicleList_VO> getVeList(ParaInt2VO paraint2VO) throws Exception {
+		return dash_Dao.getVeList(paraint2VO);
 	}
 
 	@Override
@@ -42,13 +44,23 @@ public class DashboardServiceImpl implements DashboardService {
 	}
 
 	@Override
-	public List<Calendar_VO> getCalList(Para2VO para2vo) throws Exception {
+	public List<VehicleInfo_VO> getVEContents(String car_number) throws Exception {
+		return dash_Dao.getVEContents(car_number);
+	}
+
+	@Override
+	public List<Calendar_VO> getCalList(ParaStr2VO para2vo) throws Exception {
 		return dash_Dao.getCalList(para2vo);
 	}
 
 	@Override
 	public int getEmpListCnt() throws Exception {
 		return dash_Dao.getEmpListCnt();
+	}
+
+	@Override
+	public int getVEListCnt() throws Exception {
+		return dash_Dao.getVEListCnt();
 	}
 
 }
