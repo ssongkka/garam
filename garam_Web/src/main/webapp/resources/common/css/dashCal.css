@@ -1,15 +1,28 @@
 @charset "UTF-8";
 
 .cal-sat {
-	color: var(--sat-col);
+	color: #4B89DC;
 }
 
 .cal-sun {
-	color: var(--sun-col);
+	color: #CF2F11;
+}
+
+.cal-sat-no {
+	color: #6fa0e3;
+}
+
+.cal-sun-no {
+	color: #f0674f;
+}
+
+.cal-no {
+	color: #8390A2;
 }
 
 .dash-cal {
-	padding: 1.4rem;
+	/* 	padding: 1.4rem; */
+	
 }
 
 .dash-cal-h {
@@ -92,4 +105,12 @@
 .dash-cal-h-item4 {
 	display: flex;
 	gap: 0.7rem;
+}
+
+#yearMonth {
+	font-size: 1.5rem;
+}
+
+#bigDay {
+	font-size: 2rem;
 }

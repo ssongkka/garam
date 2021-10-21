@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.garam.common.model.CalendarMake_VO;
 import com.garam.common.model.Calendar_VO;
 import com.garam.common.model.EmployeeInfo_VO;
 import com.garam.common.model.EmployeeList_VO;
@@ -49,6 +50,11 @@ public class DashboardDAOImpl implements DashboardDAO {
 	}
 
 	@Override
+	public List<CalendarMake_VO> getCalMake(ParaStr2VO para2vo) throws Exception {
+		return sqlSession.selectList("com.garam.web.common.Calendar_Mapper.get_Make_Cal_Data", para2vo);
+	}
+
+	@Override
 	public List<Calendar_VO> getCalList(ParaStr2VO para2vo) throws Exception {
 		return sqlSession.selectList("com.garam.web.common.Calendar_Mapper.get_Cal_Data", para2vo);
 	}
@@ -62,4 +68,5 @@ public class DashboardDAOImpl implements DashboardDAO {
 	public int getVEListCnt() throws Exception {
 		return sqlSession.selectOne("com.garam.web.common.VehicleInfo_Mapper.get_VE_List_Cnt");
 	}
+
 }

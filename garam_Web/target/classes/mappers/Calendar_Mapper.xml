@@ -7,6 +7,26 @@
 
 <mapper namespace="com.garam.web.common.Calendar_Mapper">
 
+	<select id="get_Make_Cal_Data"
+		parameterType="com.garam.common.model.para.ParaStr2VO"
+		resultType="com.garam.common.model.Calendar_VO">
+
+		SELECT
+
+		no,
+		solar_Cal,
+		holiday,
+		event
+
+		FROM cal
+
+		WHERE
+
+		solar_Cal BETWEEN
+		#{num1} AND #{num2}
+
+	</select>
+
 	<select id="get_Cal_Data"
 		parameterType="com.garam.common.model.para.ParaStr2VO"
 		resultType="com.garam.common.model.Calendar_VO">

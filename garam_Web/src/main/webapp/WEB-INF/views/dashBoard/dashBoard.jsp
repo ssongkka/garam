@@ -12,12 +12,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/common/css/dashBoard.css">
+	href="${pageContext.request.contextPath}/resources/common/css/dashBoard.css?after">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/common/css/dashCal.css">
+	href="${pageContext.request.contextPath}/resources/common/css/dashCal.css?after">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/common/css/dashEmp.css">
-
+	href="${pageContext.request.contextPath}/resources/common/css/dashEmp.css?after">
 </head>
 
 <body>
@@ -62,11 +61,7 @@
 								</footer>
 							</blockquote>
 						</div>
-						<div class="dash-2-item dash-2-item1" id="cal2">&nbsp;</div>
-						<div class="dash-2-item dash-2-item2" id="cal3">&nbsp;</div>
-						<div class="dash-2-item dash-2-item3" id="cal4">&nbsp;</div>
-						<div class="dash-2-item dash-2-item4" id="cal5">&nbsp;</div>
-						<div class="dash-2-item dash-2-item5" id="cal6">&nbsp;</div>
+						<div class="dash-2-item dash-2-item2" id="cal2"></div>
 					</div>
 				</div>
 				<div class="item_Main" style="padding: 0px">
@@ -94,74 +89,65 @@
 						</div>
 					</div>
 				</div>
-				<div class="item_Main card-song" style="padding: 0px">
+				<div class="item_Main" style="padding: 0px">
 					<div class="dash-4">
-						<div class="dash-4-item-1 card-title" id="dash-week-0"></div>
-						<div class="dash-4-item-2">
-							<strong id="dash-day-0"></strong>
+						<div class="dash-4-item card-song">
+							<div class="dash-4-item-1 card-title" id="dash-week-0"></div>
+							<div class="dash-4-item-2">
+								<strong id="dash-day-0"></strong>
+							</div>
+							<div class="dash-4-item-3" id="dash-hol-0">-</div>
+							<div class="dash-4-item-4" id="dash-bus-0">35 / 35 / 35</div>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-0">-</div>
-						<div class="dash-4-item-4" id="dash-bus-0">35 / 35 / 35</div>
-					</div>
-				</div>
-				<div class="item_Main card-song" style="padding: 0px">
-					<div class="dash-4">
-						<div class="dash-4-item-1 card-title" id="dash-week-1"></div>
-						<div class="dash-4-item-2">
-							<strong id="dash-day-1"></strong>
+						<div class="dash-4-item card-song">
+							<div class="dash-4-item-1 card-title" id="dash-week-1"></div>
+							<div class="dash-4-item-2">
+								<strong id="dash-day-1"></strong>
+							</div>
+							<div class="dash-4-item-3" id="dash-hol-1">-</div>
+							<div class="dash-4-item-4" id="dash-bus-1">35 / 35 / 35</div>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-1">-</div>
-						<div class="dash-4-item-4" id="dash-bus-1">35 / 35 / 35</div>
-					</div>
-				</div>
-				<div class="item_Main card-song" style="padding: 0px">
-					<div class="dash-4">
-						<div class="dash-4-item-1 card-title" id="dash-week-2"></div>
-						<div class="dash-4-item-2">
-							<strong id="dash-day-2"></strong>
+						<div class="dash-4-item card-song">
+							<div class="dash-4-item-1 card-title" id="dash-week-2"></div>
+							<div class="dash-4-item-2">
+								<strong id="dash-day-2"></strong>
+							</div>
+							<div class="dash-4-item-3" id="dash-hol-2">-</div>
+							<div class="dash-4-item-4" id="dash-bus-2">35 / 35 / 35</div>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-2">-</div>
-						<div class="dash-4-item-4" id="dash-bus-2">35 / 35 / 35</div>
-					</div>
-				</div>
-				<div class="item_Main card-song" style="padding: 0px">
-					<div class="dash-4">
-						<div class="dash-4-item-1 card-title" id="dash-week-3"></div>
-						<div class="dash-4-item-2">
-							<strong id="dash-day-3"></strong>
+						<div class="dash-4-item card-song">
+							<div class="dash-4-item-1 card-title" id="dash-week-3"></div>
+							<div class="dash-4-item-2">
+								<strong id="dash-day-3"></strong>
+							</div>
+							<div class="dash-4-item-3" id="dash-hol-3">-</div>
+							<div class="dash-4-item-4" id="dash-bus-3">35 / 35 / 35</div>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-3">-</div>
-						<div class="dash-4-item-4" id="dash-bus-3">35 / 35 / 35</div>
-					</div>
-				</div>
-				<div class="item_Main card-song" style="padding: 0px">
-					<div class="dash-4">
-						<div class="dash-4-item-1 card-title" id="dash-week-4"></div>
-						<div class="dash-4-item-2">
-							<strong id="dash-day-4"></strong>
+						<div class="dash-4-item card-song">
+							<div class="dash-4-item-1 card-title" id="dash-week-4"></div>
+							<div class="dash-4-item-2">
+								<strong id="dash-day-4"></strong>
+							</div>
+							<div class="dash-4-item-3" id="dash-hol-4">-</div>
+							<div class="dash-4-item-4" id="dash-bus-4">35 / 35 / 35</div>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-4">-</div>
-						<div class="dash-4-item-4" id="dash-bus-4">35 / 35 / 35</div>
-					</div>
-				</div>
-				<div class="item_Main card-song" style="padding: 0px">
-					<div class="dash-4">
-						<div class="dash-4-item-1 card-title" id="dash-week-5"></div>
-						<div class="dash-4-item-2">
-							<strong id="dash-day-5"></strong>
+						<div class="dash-4-item card-song">
+							<div class="dash-4-item-1 card-title" id="dash-week-5"></div>
+							<div class="dash-4-item-2">
+								<strong id="dash-day-5"></strong>
+							</div>
+							<div class="dash-4-item-3" id="dash-hol-5">-</div>
+							<div class="dash-4-item-4" id="dash-bus-5">35 / 35 / 35</div>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-5">-</div>
-						<div class="dash-4-item-4" id="dash-bus-5">35 / 35 / 35</div>
-					</div>
-				</div>
-				<div class="item_Main card-song" style="padding: 0px">
-					<div class="dash-4">
-						<div class="dash-4-item-1 card-title" id="dash-week-6"></div>
-						<div class="dash-4-item-2">
-							<strong id="dash-day-6"></strong>
+						<div class="dash-4-item card-song">
+							<div class="dash-4-item-1 card-title" id="dash-week-6"></div>
+							<div class="dash-4-item-2">
+								<strong id="dash-day-6"></strong>
+							</div>
+							<div class="dash-4-item-3" id="dash-hol-6">-</div>
+							<div class="dash-4-item-4" id="dash-bus-6">35 / 35 / 35</div>
 						</div>
-						<div class="dash-4-item-3" id="dash-hol-6">-</div>
-						<div class="dash-4-item-4" id="dash-bus-6">35 / 35 / 35</div>
+
 					</div>
 				</div>
 				<div class="item_Main card-song" style="padding: 0px">

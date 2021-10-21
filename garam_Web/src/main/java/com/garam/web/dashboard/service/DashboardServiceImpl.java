@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.garam.common.model.CalendarMake_VO;
 import com.garam.common.model.Calendar_VO;
 import com.garam.common.model.EmployeeInfo_VO;
 import com.garam.common.model.EmployeeList_VO;
@@ -46,6 +47,11 @@ public class DashboardServiceImpl implements DashboardService {
 	@Override
 	public List<VehicleInfo_VO> getVEContents(String car_number) throws Exception {
 		return dash_Dao.getVEContents(car_number);
+	}
+
+	@Override
+	public List<CalendarMake_VO> getCalMake(ParaStr2VO para2vo) throws Exception {
+		return dash_Dao.getCalMake(para2vo);
 	}
 
 	@Override

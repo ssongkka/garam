@@ -2,6 +2,7 @@ package com.garam.web.dashboard.service;
 
 import java.util.List;
 
+import com.garam.common.model.CalendarMake_VO;
 import com.garam.common.model.Calendar_VO;
 import com.garam.common.model.EmployeeInfo_VO;
 import com.garam.common.model.EmployeeList_VO;
@@ -22,6 +23,8 @@ public interface DashboardService {
 	public List<EmployeeInfo_VO> getEmpContents(String id) throws Exception;
 
 	public List<VehicleInfo_VO> getVEContents(String car_number) throws Exception;
+
+	public List<CalendarMake_VO> getCalMake(ParaStr2VO para2vo) throws Exception;
 
 	public List<Calendar_VO> getCalList(ParaStr2VO para2vo) throws Exception;
 

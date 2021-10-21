@@ -1,19 +1,18 @@
-var sat_C = "#0C6FCD";
-var sun_C = "#CF2F11";
-
 function setCalendar(now_D, day) {
 	var rtn = "";
 
 	$("#yearMonth").empty();
-	$("#yearMonth").prepend('<strong style = "font-size: 18px;">' + now_D.getFullYear() + '년 ' + (now_D.getMonth() + 1) + "월" + '</strong>');
+	$("#yearMonth").prepend('<strong>' + now_D.getFullYear() + '년 ' + (now_D.getMonth() + 1) + "월" + '</strong>');
 
 	var check = now_D.getMonth();
 	var stD = getCalStD(now_D);
+	var dayST = stD.getFullYear() + "-" + (stD.getMonth() + 1) + "-" + stD.getDate();
+	var dayED = "";
 
 	var htmls = '<div class="dash-cal-con-item"><span>월</span></div>' + '<div class="dash-cal-con-item"><span>화</span></div>'
 		+ '<div class="dash-cal-con-item"><span>수</span></div>' + '<div class="dash-cal-con-item"><span>목</span></div>'
-		+ '<div class="dash-cal-con-item"><span>금</span></div>' + '<div class="dash-cal-con-item cal-sat"><span>토</span></div>'
-		+ '<div class="dash-cal-con-item cal-sun"><span>일</span></div>';
+		+ '<div class="dash-cal-con-item"><span>금</span></div>' + '<div class="dash-cal-con-item cal-sat"><span class="#0C6FCD">토</span></div>'
+		+ '<div class="dash-cal-con-item cal-sun"><span class="#CF2F11">일</span></div>';
 
 	for (var i = 0; i < 42; i++) {
 		var a = 0;
@@ -24,11 +23,24 @@ function setCalendar(now_D, day) {
 		stD = new Date(stD.setDate(stD.getDate() + a));
 		var days = stD.getFullYear() + "-" + (stD.getMonth() + 1) + "-" + stD.getDate();
 
+
+		htmls += '<div class="dash-cal-con-item-c" id="dash-cal-con-item' + (i + 1) + '" onclick="setCalWhite(this.id)"';
 		if (check == stD.getMonth()) {
-			htmls += '<div class="dash-cal-con-item-c" id="dash-cal-con-item' + (i + 1) + '" onclick="setCalWhite(this.id)"style=""><span>' + stD.getDate() + '</span><input type="hidden" id = "calDay' + (i + 1) + '" value="' + days + '" ></div>\n';
+			if (stD.getDay() == 6) {
+				htmls += ' style="color: #4B89DC;"';
+			} else if (stD.getDay() == 0) {
+				htmls += 'style="color: #CF2F11;"';
+			}
 		} else {
-			htmls += '<div class="dash-cal-con-item-c" id="dash-cal-con-item' + (i + 1) + '" onclick="setCalWhite(this.id)"style="color: gray;"><span>' + stD.getDate() + '</span><input type="hidden" id = "calDay' + (i + 1) + '" value="' + days + '" ></div>\n';
+			if (stD.getDay() == 6) {
+				htmls += ' style="color: #6fa0e3;"';
+			} else if (stD.getDay() == 0) {
+				htmls += ' style="color: #f0674f;"';
+			} else {
+				htmls += ' style="color: #8390A2;"';
+			}
 		}
+		htmls += '><span>' + stD.getDate() + '</span><input type="hidden" id = "calDay' + (i + 1) + '" value="' + days + '" ></div>\n';
 
 		if (day != null) {
 
@@ -36,10 +48,78 @@ function setCalendar(now_D, day) {
 				rtn = "dash-cal-con-item" + (i + 1);
 			}
 		}
+
+		if (i == 41) {
+			dayED = days;
+		}
 	}
 	$("#dash-cal-contents").html(htmls);
-
+	setCalendarHol(dayST, dayED);
 	return rtn;
+}
+
+function setCalendarHol(stD, endD) {
+	console.log("cccc  " + stD);
+	console.log("cccc  " + endD);
+	var url = "/dashMakeCal/getCalMake";
+	var headers = {
+		"Content-Type": "application/json",
+		"X-HTTP-Method-Override": "POST"
+	};
+
+	var paramData = JSON.stringify({
+		"num1": stD,
+		"num2": endD
+	});
+
+	$.ajax({
+		url: url,
+		headers: headers,
+		type: 'POST',
+		data: paramData,
+		dataType: 'json',
+
+		success: function(r) {
+			var tmpArr = new Array();
+			for (var i = 0; i < r.length; i++) {
+				if (r[i].holiday != null && r[i].holiday != "") {
+					tmpArr.push(r[i].solar_Cal);
+				}
+			}
+
+			for (var i = 0; i < r.length; i++) {
+				var calID = "#" + "dash-cal-con-item" + (i + 1);
+				var aaa = $(calID).find('input');
+				var dayID = "#" + aaa.attr('id');
+				var getDay = $(dayID).val();
+				var tmp = getDay.split("-");
+				var ttmp = tmp[0] + tmp[1] + tmp[2];
+				for (var k = 0; k < tmpArr.length; k++) {
+					var tmp1 = tmpArr[k].split("-");
+					var ttmp1 = tmp1[0] + tmp1[1] + tmp1[2];
+					var ttmpM = "";
+
+					if (tmp1[1] < 10) {
+						ttmpM = tmp1[1].substring(1);
+					} else {
+						ttmpM = tmp1[1];
+					}
+
+					if (tmp1[2] < 10) {
+						ttmp1 = tmp1[0] + ttmpM + tmp1[2].substring(1);
+					} else {
+						ttmp1 = tmp1[0] + ttmpM + tmp1[2];
+					}
+
+					console.log(ttmp + "  " + ttmp1);
+					console.log(ttmp == ttmp1);
+					if (ttmp == ttmp1) {
+						$(calID).css('color', '#CF2F11');
+					}
+				}
+			}
+		}
+	})
 }
 
 function setCalWhite(e) {
@@ -104,11 +184,11 @@ function setMidDay(day) {
 		var id = "#dash-week-" + String(i);
 
 		if (tmp[i] === 0) {
-			$(id).css('color', sun_C);
+			$(id).prop('class', 'dash-4-item-1 card-title cal-sun');
 		} else if (tmp[i] === 6) {
-			$(id).css('color', sat_C);
+			$(id).prop('class', 'dash-4-item-1 card-title cal-sat');
 		} else {
-			$(id).css('color', 'black');
+			$(id).prop('class', 'dash-4-item-1 card-title');
 		}
 
 		$(id).empty();
@@ -138,10 +218,6 @@ function setCaldays(day) {
 
 	var cal1 = "";
 	var cal2 = "";
-	var cal3 = "";
-	var cal4 = "";
-	var cal5 = "";
-	var cal6 = "";
 
 	$.ajax({
 		url: url,
@@ -156,9 +232,22 @@ function setCaldays(day) {
 			console.log("aa   " + r);
 			if (r.length > 0) {
 				cal1 = "음력 " + r[0].lunar_Cal;
-				cal2 = '<span>' + r[0].event + '</span>' + '<span style = "color : ' + sun_C + ';">' + r[0].holiday
-					+ '</span>' + '<span>' + r[0].anniversary + '</span>' + '<span>' + r[0].season + '</span>'
-					+ '<span>' + r[0].etc + '</span>';
+
+				if (r[0].event != null || r[0].event == "") {
+					cal2 += '<div>' + r[0].event + '</div>';
+				}
+				if (r[0].holiday != null || r[0].holiday == "") {
+					cal2 += '<div class = "cal-sun">' + r[0].holiday + '</div>';
+				}
+				if (r[0].anniversary != null || r[0].anniversary == "") {
+					cal2 += '<div>' + r[0].anniversary + '</div>';
+				}
+				if (r[0].season != null || r[0].season == "") {
+					cal2 += '<div>' + r[0].season + '</div>';
+				}
+				if (r[0].etc != null || r[0].etc == "") {
+					cal2 += '<div>' + r[0].etc + '</div>';
+				}
 
 				for (var i = 0; i < 7; i++) {
 					var id = "#dash-hol-" + String(i);
@@ -166,21 +255,17 @@ function setCaldays(day) {
 
 					$(id).empty();
 
-					if (r[i].holiday == null) {
+					if (r[i].holiday == null || r[i].holiday == "") {
 						$(id).prepend("-");
 					} else {
 						$(id).prepend(r[i].holiday);
-						$(id2).css('color', sun_C);
+						$(id2).prop('class', 'dash-4-item-1 card-title cal-sun');
 					}
 				}
 			}
 
 			$("#cal1").html(cal1);
 			$("#cal2").html(cal2);
-			$("#cal3").html(cal3);
-			$("#cal4").html(cal4);
-			$("#cal5").html(cal5);
-			$("#cal6").html(cal6);
 		}
 	})
 }
