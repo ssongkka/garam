@@ -227,10 +227,31 @@ tr {
 	position: fixed;
 }
 
-.side-R-item {
-	width: 100%;
-	height: 100px;
-	flex-grow: 1;
+.side-R div {
+	
+}
+
+.side-R-item1 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
+	padding: 1rem;
+}
+
+.side-R-item1-items {
+	display: inline-block;
+	line-height: 100%;
+	padding: 1rem;
+	text-align: center;
+	padding: 1rem;
+}
+
+.side-R-item2 {
+	display: flex;
+}
+
+.side-R-item3 {
+	display: flex;
 }
 
 @media only screen and (max-width: 1200px) {

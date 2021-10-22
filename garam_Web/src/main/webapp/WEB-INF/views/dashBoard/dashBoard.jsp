@@ -12,11 +12,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/common/css/dashBoard.css?after">
+	href="${pageContext.request.contextPath}/resources/common/css/cal.css?after">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/common/css/dashCal.css?after">
+	href="${pageContext.request.contextPath}/resources/common/css/dashCss/dashBoard.css?after">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/common/css/dashEmp.css?after">
+	href="${pageContext.request.contextPath}/resources/common/css/dashCss/dashEmp.css?after">
 </head>
 
 <body>
@@ -336,9 +336,22 @@
 		</section>
 		<div class="sidebar">
 			<div class="side-R">
-				<div class="side-R-item card-song"></div>
-				<div class="side-R-item card-song"></div>
-				<div class="side-R-item card-song"></div>
+				<div class="side-R-item1 card-song">
+					<div class="side-R-item1-items">
+						<a>1</a>
+					</div>
+					<div class="side-R-item1-items">
+						<a>1</a>
+					</div>
+					<div class="side-R-item1-items">
+						<a>1</a>
+					</div>
+					<div class="side-R-item1-items">
+						<a>1</a>
+					</div>
+				</div>
+				<div class="side-R-item2 card-song"></div>
+				<div class="side-R-item3 card-song"></div>
 			</div>
 		</div>
 	</div>
