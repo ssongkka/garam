@@ -443,3 +443,26 @@ function getVEList(page, range) {
 		}
 	});
 }
+
+ClassicEditor
+	.create(document.querySelector('#cont-info'))
+	.catch(error => {
+		console.error(error);
+	});
+
+
+
+$(document).on(
+	'click',
+	'#okok',
+	function() {
+
+		console.log($('#date-info').val());
+		console.log(typeof $('#date-info').val());
+	});
+
+
+
+
+
+

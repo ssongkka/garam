@@ -22,3 +22,12 @@ body {
 	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.301);
 	border-radius: .3rem .3rem 0px 0px; /* 5px rounded corners */
 }
+
+.ck-editor__editable {
+	height: 300px;
+}
+
+.las {
+	display: inline;
+	line-height: 1.5rem;
+}

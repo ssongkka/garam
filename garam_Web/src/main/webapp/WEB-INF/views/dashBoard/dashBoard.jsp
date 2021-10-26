@@ -20,10 +20,9 @@
 </head>
 
 <body>
-
-	<div class="container-fluid">
-		<section>
-			<div class="dash_Main">
+	<div class="dash-board-main">
+		<main>
+			<div class="dash-Main">
 				<div class="item_Main card-song dash-cal">
 					<div class="dash-cal-h">
 						<div class="dash-cal-h-item dash-cal-h-item1" id="fnDownMonth"
@@ -332,28 +331,153 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</section>
-		<div class="sidebar">
-			<div class="side-R">
-				<div class="side-R-item1 card-song">
-					<div class="side-R-item1-items">
-						<a>1</a>
-					</div>
-					<div class="side-R-item1-items">
-						<a>1</a>
-					</div>
-					<div class="side-R-item1-items">
-						<a>1</a>
-					</div>
-					<div class="side-R-item1-items">
-						<a>1</a>
+				<div class="item_Main card-song" style="padding: 0px">
+					<div class="dash-7">
+						<h2>
+							<label for="nav-toggle"> <span class="las la-bars">
+							</span>
+							</label>
+						</h2>
 					</div>
 				</div>
-				<div class="side-R-item2 card-song"></div>
-				<div class="side-R-item3 card-song"></div>
+			</div>
+		</main>
+	</div>
+	<input type="checkbox" id="nav-toggle">
+	<div class="side-R">
+		<div class="side-R-item1 card-song">
+			<div class="side-R-item1-items">
+				<a>1</a>
+			</div>
+			<div class="side-R-item1-items">
+				<a>1</a>
+			</div>
+			<div class="side-R-item1-items">
+				<a>1</a>
+			</div>
+			<div class="side-R-item1-items">
+				<a>1</a>
 			</div>
 		</div>
+		<div class="side-R-item2 card-song">
+			<div class="card">
+				<div class="card-header">
+					공지 사항
+					<button type="button" class="btn btn-primary btn-sm">
+						등록&nbsp;<i class="las la-plus-circle"></i>
+					</button>
+				</div>
+				<div class="card-body">
+					<table
+						class="table table-striped table-bordered table-condensed table-hover"
+						style="margin-top: 0.3rem">
+						<colgroup>
+							<col style="width: 40%;" />
+							<col style="width: auto;" />
+						</colgroup>
+						<thead>
+							<tr>
+							</tr>
+						</thead>
+						<tbody id="tbInfo">
+							<tr data-toggle="collapse" href="#dash-collapse-01"
+								aria-expanded="true" aria-controls="dash-collapse-01">
+								<td>
+									<div class="dash-info">
+										<div class="dash-info-item">
+											<img
+												src="${pageContext.request.contextPath}/resources/common/img/stop.png"
+												width="23px" height="23px" alt="">
+										</div>
+										<div class="dash-info-item">Lewis S. Cunningham</div>
+										<div class="dash-info-item">부장 홍길동</div>
+										<div class="dash-info-item">
+											<i class="las la-history"></i>2011-04-20까지
+										</div>
+										<div class="dash-info-item">2021-04-20</div>
+									</div>
+									<div id="dash-collapse-01"
+										class="panel-collapse collapse collapse-01" role="tabpanel">
+										<div class="dash-collapse-01-body">Anim pariatur cliche
+											reprehenderit, enim eiusmod high life accusamus terry
+											richardson ad squid. 3 wolf moon officia aute, non cupidatat
+											skateboard dolor brunch. Food truck quinoa nesciunt laborum
+											eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
+											it squid single-origin coffee nulla assumenda shoreditch et.
+											Nihil anim keffiyeh helvetica, craft beer labore wes anderson
+											cred nesciunt sapiente ea proident. Ad vegan excepteur
+											butcher vice lomo. Leggings occaecat craft beer
+											farm-to-table, raw denim aesthetic synth nesciunt you
+											probably haven't heard of them accusamus labore sustainable
+											VHS.</div>
+										<div class="dash-collapse-btn">
+											<div class="dash-collapse-btn-item">
+												<button type="button"
+													class="btn btn-primary btn-xs btn-block btn-danger">
+													<i class="las la-trash-alt"></i>&nbsp;삭제
+												</button>
+											</div>
+											<div class="dash-collapse-btn-item">
+												<button type="button"
+													class="btn btn-primary btn-xs btn-block btn-warning">
+													<i class="las la-sync"></i>&nbsp;수정
+												</button>
+											</div>
+											<div class="dash-collapse-btn-item">
+												<button type="button"
+													class="btn btn-primary btn-sm btn-block btn-success">
+													<i class="las la-plus-circle"></i>&nbsp;완료
+												</button>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<!-- Modal -->
+					<div class="modal fade" id="modal-info" tabindex="-1" role="dialog"
+						aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+								</div>
+								<div class="modal-body" id="modal-body-info">
+									<form>
+										<div class="form-group input-group-lg">
+											<label for="title-info">제목</label> <input type="text"
+												class="form-control" id="title-info" placeholder="제목을 입력하세요">
+										</div>
+										<div class="form-group">
+											<label for="title-info">기한</label> <input
+												type="datetime-local" class="form-control" id="date-info"
+												value="2021-10-22T16:36">
+										</div>
+										<div>
+											<label> <input type="checkbox" id=""> 기한없음
+											</label>
+										</div>
+										<div class="form-group">
+											<label for="cont-info">내용</label>
+											<textarea class="form-control" id="cont-info"></textarea>
+										</div>
+										<button type="button" class="btn btn-default"
+											data-dismiss="modal">닫 기</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- Modal -->
+				</div>
+			</div>
+		</div>
+		<div class="side-R-item3 card-song"></div>
 	</div>
 </body>
 
