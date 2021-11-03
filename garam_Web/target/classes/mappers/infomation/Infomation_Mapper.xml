@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.garam.web.infomation.Infomation_Mapper">
+
+	<select id="getInfomationList"
+		resultType="com.garam.web.infomation.model.InfomationListVO">
+
+		SELECT
+
+		no, insert_date,
+		date_end, date_com, grade, name,
+		title, contents, trash
+
+		FROM information
+
+		ORDER BY
+		grade DESC, date_end
+		ASC;
+
+
+	</select>
+
+	<select id="getInfoListCnt" resultType="int">
+
+		SELECT
+
+		count(*) as
+		listCnt
+
+		FROM
+
+		information
+
+		WHERE trash = 1;
+
+	</select>
+
+	<select id="getInfomationContent"
+		resultType="com.garam.web.infomation.model.InfomationListVO"
+		parameterType="com.garam.web.infomation.model.InfomationListVO">
+
+		SELECT
+
+		no, insert_date,
+		date_end, date_com, grade, name,
+		title, contents, trash
+
+		FROM
+
+		information
+
+		WHERE
+
+		no = #{no};
+
+	</select>
+
+	<insert id="insertInfomation"
+		parameterType="com.garam.web.infomation.model.InfomationListVO">
+
+		INSERT INTO information
+		(insert_date,
+		date_end,
+		date_com,
+		grade,
+		name,
+		title,
+		contents,
+		trash)
+
+		VALUES(
+
+		NOW(),
+		#{date_end},
+		#{date_com},
+		#{grade},
+		#{name},
+		#{title},
+		#{contents},
+		1
+
+		);
+
+	</insert>
+
+	<update id="updateInfomation"
+		parameterType="com.garam.web.infomation.model.InfomationListVO">
+
+		UPDATE information
+
+		SET
+
+		insert_date = #{insert_date},
+		date_end =
+		#{date_end},
+		date_com = #{date_com},
+		grade = #{grade},
+		name =
+		#{name},
+		title = #{title},
+		contents = #{contents},
+		trash = 1
+
+		WHERE no =
+		#{no};
+
+	</update>
+
+	<update id="deleteInfomation" parameterType="int">
+
+		UPDATE information
+
+		SET
+
+		trash = 0
+
+		WHERE no =
+		#{no};
+
+	</update>
+
+</mapper>
+

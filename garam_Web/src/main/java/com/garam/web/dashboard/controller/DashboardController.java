@@ -18,7 +18,6 @@ public class DashboardController {
 	@RequestMapping(value = "/dashBoard")
 	public String getList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range) throws Exception {
-
 		return "dashBoard/dashBoard";
 	}
 }

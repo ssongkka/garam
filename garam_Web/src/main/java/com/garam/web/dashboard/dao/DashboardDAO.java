@@ -11,6 +11,7 @@ import com.garam.common.model.VehicleInfo_VO;
 import com.garam.common.model.VehicleList_VO;
 import com.garam.common.model.para.ParaInt2VO;
 import com.garam.common.model.para.ParaStr2VO;
+import com.garam.web.dashboard.model.info_VO;
 
 public interface DashboardDAO {
 	public List<EmployeeList_VO> getEmpList(ParaInt2VO paraint2VO) throws Exception;
@@ -30,4 +31,8 @@ public interface DashboardDAO {
 	public int getEmpListCnt() throws Exception;
 
 	public int getVEListCnt() throws Exception;
+
+	public List<info_VO> getInfoList(ParaInt2VO paraint2VO) throws Exception;
+
+	public int getInfoListCnt() throws Exception;
 }

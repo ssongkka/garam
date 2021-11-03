@@ -1,152 +1,121 @@
-var listSize = 20; // 초기값으로 목록개수를 10으로 셋팅
+class pageCla {
+	constructor(page, listcnt, listsize, rangesize) {
+		this.listSize = listsize;
+		this.paGe = Math.floor(page / this.listSize) + 1;
+		console.log("1this.listSize  " + this.listSize);
+		this.ranGe = Math.floor(this.paGe / rangesize + 1);
+		console.log("2this.listSize  " + this.listSize);
+		this.listCnt = listcnt;
+		console.log("3this.listSize  " + this.listSize);
+		console.log("4this.listSize  " + this.listSize);
+		this.rangeSize = rangesize;
+		console.log("5this.listSize  " + this.listSize);
 
-var rangeSize = 10; // 초기값으로 페이지범위를 10으로 셋팅
+		this.pageCnt = Math.ceil(this.listCnt / this.listSize);
+		console.log("6this.listSize  " + this.listSize);
+		this.startPage = (this.ranGe - 1) * this.rangeSize + 1;
+		console.log("7this.listSize  " + this.listSize);
+		this.endPage = this.ranGe * this.rangeSize;
+		console.log("8this.listSize  " + this.listSize);
+		this.startList = (this.paGe - 1) * this.listSize;
+		console.log("9this.listSize  " + this.listSize);
+		this.prEv = this.ranGe == 1 ? false : true;
+		console.log("10this.listSize  " + this.listSize);
+		this.neXt = this.pageCnt > this.endPage ? true : false;
+		console.log("11this.listSize  " + this.listSize);
 
-var page;
-
-var range;
-
-var listCnt;
-
-var pageCnt;
-
-var startPage;
-
-var startList;
-
-var endPage;
-
-var prev;
-
-var next;
-
-
-
-var gsListSize = {
-	get gListSize() {
-		return listSize;
-	},
-	set sListSize(num) {
-		listSize = num;
+		if (this.endPage > this.pageCnt) {
+			this.endPage = this.pageCnt;
+			this.neXt = false;
+		}
+		console.log("1this.listSize  " + this.listSize);
+		console.log("1this.paGe  " + this.paGe);
+		console.log("1this.ranGe  " + this.ranGe);
+		console.log("1this.listCnt  " + this.listCnt);
+		console.log("1this.listSize  " + this.listSize);
+		console.log("1this.rangeSize  " + this.rangeSize);
+		console.log("1this.pageCnt  " + this.pageCnt);
+		console.log("1this.startPage  " + this.startPage);
+		console.log("1this.endPage  " + this.endPage);
+		console.log("1this.startList  " + this.startList);
+		console.log("1this.prEv  " + this.prEv);
+		console.log("1this.neXt " + this.neXt);
 	}
-}
-
-var gsRangeSize = {
-	get gPage() {
-		return rangeSize;
-	},
-	set sPage(num) {
-		rangeSize = num;
+	get listSize() {
+		return this.list_Size;
 	}
-}
-
-var gsPage = {
-	get gPage() {
-		return page;
-	},
-	set sPage(num) {
-		page = num;
+	set listSize(num) {
+		this.list_Size = num;
 	}
-}
 
-var gsRange = {
-	get gRange() {
-		return range;
-	},
-	set sRange(num) {
-		range = num;
+	get rangeSize() {
+		return this.range_Size;
 	}
-}
-
-var gsListCnt = {
-	get gListCnt() {
-		return listCnt;
-	},
-	set sListCnt(num) {
-		listCnt = num;
+	set rangeSize(num) {
+		this.range_Size = num;
 	}
-}
 
-var gsPageCnt = {
-	get gPageCnt() {
-		return pageCnt;
-	},
-	set sPageCnt(num) {
-		pageCnt = num;
+	get paGe() {
+		return this.p_age;
 	}
-}
-
-var gsStartPage = {
-	get gStartPage() {
-		return startPage;
-	},
-	set sStartPage(num) {
-		startPage = num;
+	set paGe(num) {
+		this.p_age = num;
 	}
-}
 
-var gsStartList = {
-	get gStartList() {
-		return startList;
-	},
-	set sStartList(num) {
-		startList = num;
+	get ranGe() {
+		return this.r_Ange;
 	}
-}
-
-var gsEndPage = {
-	get gEndPage() {
-		return endPage;
-	},
-	set sEndPage(num) {
-		endPage = num;
+	set ranGe(num) {
+		this.r_Ange = num;
 	}
-}
 
-var gsPrev = {
-	get gPrev() {
-		return prev;
-	},
-	set sPrev(bl) {
-		prev = bl;
+	get listCnt() {
+		return this.list_Cnt;
 	}
-}
-
-var gsNext = {
-	get gNext() {
-		return next;
-	},
-	set sNext(bl) {
-		next = bl;
+	set listCnt(num) {
+		this.list_Cnt = num;
 	}
-}
 
-function fnPageInfo(page, range, listCnt) {
-	gsPage.sPage = page;
-
-	gsRange.sRange = range;
-
-	gsListCnt.sListCnt = listCnt;
-
-	console.log("12311323   " + listCnt / listSize);
-	console.log("12311323   " + Math.ceil(listCnt / listSize));
-
-	gsPageCnt.sPageCnt = Math.ceil(listCnt / listSize);
-
-	gsStartPage.sStartPage = (range - 1) * rangeSize + 1;
-
-	gsEndPage.sEndPage = range * rangeSize;
-
-	gsStartList.sStartList = (page - 1) * listSize;
-
-	gsPrev.sPrev = range == 1 ? false : true;
-
-	gsNext.sNext = pageCnt > endPage ? true : false;
-
-	if (gsEndPage.gEndPage > gsPageCnt.gPageCnt) {
-
-		gsEndPage.sEndPage = gsPageCnt.gPageCnt;
-
-		gsNext.sNext = false;
+	get pageCnt() {
+		return this.page_Cnt;
 	}
+	set pageCnt(num) {
+		this.page_Cnt = num;
+	}
+
+	get startPage() {
+		return this.start_Page;
+	}
+	set startPage(num) {
+		this.start_Page = num;
+	}
+
+	get startList() {
+		return this.start_List;
+	}
+	set startList(num) {
+		this.start_List = num;
+	}
+
+	get endPage() {
+		return this.end_Page;
+	}
+	set endPage(num) {
+		this.end_Page = num;
+	}
+
+	get prEv() {
+		return this.p_rev;
+	}
+	set prEv(bl) {
+		this.p_rev = bl;
+	}
+
+	get neXt() {
+		return this.n_ext;
+	}
+	set neXt(bl) {
+		this.n_ext = bl;
+	}
+
 }

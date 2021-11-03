@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.garam.web.dashboard.dashboard_Mapper">
+
+	<select id="get_Info_List"
+		parameterType="com.garam.common.model.para.ParaInt2VO"
+		resultType="com.garam.web.dashboard.model.info_VO">
+
+		SELECT
+
+		no, insert_date,
+		date_end, date_com, grade, name,
+		title, contents, trash
+
+		FROM information
+
+		WHERE ISNULL(date_com)
+
+		ORDER BY
+		grade DESC, date_end ASC
+
+		LIMIT #{num1}, #{num2}
+
+	</select>
+
+	<select id="get_Info_List_Cnt" resultType="int">
+
+		SELECT
+
+		count(*) as
+		listCnt
+
+		FROM
+
+		information
+
+		WHERE trash = 1 AND ISNULL(date_com)
+
+	</select>
+</mapper>
+

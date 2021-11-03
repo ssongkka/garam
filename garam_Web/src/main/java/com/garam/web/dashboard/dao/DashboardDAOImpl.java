@@ -17,6 +17,7 @@ import com.garam.common.model.VehicleInfo_VO;
 import com.garam.common.model.VehicleList_VO;
 import com.garam.common.model.para.ParaInt2VO;
 import com.garam.common.model.para.ParaStr2VO;
+import com.garam.web.dashboard.model.info_VO;
 
 @Repository
 public class DashboardDAOImpl implements DashboardDAO {
@@ -67,6 +68,16 @@ public class DashboardDAOImpl implements DashboardDAO {
 	@Override
 	public int getVEListCnt() throws Exception {
 		return sqlSession.selectOne("com.garam.web.common.VehicleInfo_Mapper.get_VE_List_Cnt");
+	}
+
+	@Override
+	public List<info_VO> getInfoList(ParaInt2VO paraint2VO) throws Exception {
+		return sqlSession.selectList("com.garam.web.dashboard.dashboard_Mapper.get_Info_List", paraint2VO);
+	}
+
+	@Override
+	public int getInfoListCnt() throws Exception {
+		return sqlSession.selectOne("com.garam.web.dashboard.dashboard_Mapper.get_Info_List_Cnt");
 	}
 
 }

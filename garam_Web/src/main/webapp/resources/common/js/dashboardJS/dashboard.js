@@ -1,5 +1,6 @@
 $(document).ready(
 	function() {
+		$('#info-limit').hide();
 		var now_D = new Date();
 
 		var nowMonth = new Date(now_D.getFullYear(), now_D.getMonth(),
@@ -9,8 +10,9 @@ $(document).ready(
 
 		var id = setCalendar(nowMonth, nowDay);
 		setCalWhite(id);
-		getEmpList(0, gsListSize.gListSize);
-		getVEList(0, gsListSize.gListSize);
+		getEmpList(0, 20);
+		getVEList(0, 20);
+		getInfoList(0, 6);
 	}
 );
 
@@ -159,75 +161,16 @@ function fn_contentEmp(id) {
 	})
 }
 
-function getEmpPaging(page, range) {
-	var url = "/dashEmpList/getEmpListCnt";
-	var headers = {
-		"Content-Type": "application/json",
-		"X-HTTP-Method-Override": "POST"
-	};
-
-	var html = "";
-
-	$.ajax({
-		url: url,
-		headers: headers,
-		type: 'POST',
-
-		success: function(r) {
-			fnPageInfo(page, range, r);
-			html += '<ul class="pagination pagination-sm">';
-			console.log(gsPrev.gPrev);
-			if (gsPrev.gPrev) {
-				html += '<li class="page-item">';
-				html += '<a class="page-link" href="#" onClick="';
-				html += '">';
-				html += '이전';
-				html += '</a></li>';
-			}
-
-			console.log("stst  " + gsStartPage.gStartPage);
-			console.log("eded  " + gsEndPage.gEndPage);
-
-			for (var i = gsStartPage.gStartPage; i <= gsEndPage.gEndPage; i++) {
-				html += '<li class="page-item ';
-				if (page == i) {
-					html += ' active';
-				} else {
-					html += '';
-				}
-
-				html += '" style="cursor: pointer;"><a class="page-link" onClick="';
-				html += 'getEmpList('
-					+ ((i - 1) * gsListSize.gListSize) + ','
-					+ gsListSize.gListSize + ')';
-				html += '">' + i + '</a></li>';
-			}
-
-			if (gsNext.gNext) {
-				html += '<li class="page-item"><a class="page-link" href="#" onClick="';
-				html += '">'
-					+ '다음' + '</a></li>';
-			}
-
-			html += '</ul>'
-			$("#paginationBoxEmp").html(html);
-		}
-	});
-}
-
-function getEmpList(page, range) {
+function getEmpList(page, listSize) {
 	var url = "/dashEmpList/getEmpList";
 	var headers = {
 		"Content-Type": "application/json",
 		"X-HTTP-Method-Override": "POST"
 	};
 
-	console.log(page);
-	console.log(range);
-
 	var paramData = JSON.stringify({
 		"num1": page,
-		"num2": range
+		"num2": listSize
 	});
 
 	var html = "";
@@ -254,14 +197,15 @@ function getEmpList(page, range) {
 						+ '</td>';
 					html += '<td align="center">' + r[i].phone1
 						+ '</td>' + '</tr>';
-
-					// 								htmlP += '<div id="paginationBox">';
-					// 								htmlP += '<ul class="pagination pagination-sm">';
-
 				}
 			}
 			$("#tbEmp").html(html);
-			getEmpPaging(page / gsListSize.gListSize + 1, 1);
+			var rangesize = 6;
+			var url = "/dashEmpList/getEmpListCnt";
+			var fns = "getEmpList";
+			var idd = "paginationBoxEmp";
+
+			getPaging(page, listSize, rangesize, url, fns, idd);
 		}
 	});
 }
@@ -337,75 +281,16 @@ function fn_contentVE(car_number) {
 	})
 }
 
-function getVEPaging(page, range) {
-	var url = "/dashVEList/getVEListCnt";
-	var headers = {
-		"Content-Type": "application/json",
-		"X-HTTP-Method-Override": "POST"
-	};
-
-	var html = "";
-
-	$.ajax({
-		url: url,
-		headers: headers,
-		type: 'POST',
-
-		success: function(r) {
-			fnPageInfo(page, range, r);
-			html += '<ul class="pagination pagination-sm">';
-			console.log(gsPrev.gPrev);
-			if (gsPrev.gPrev) {
-				html += '<li class="page-item">';
-				html += '<a class="page-link" href="#" onClick="';
-				html += '">';
-				html += '이전';
-				html += '</a></li>';
-			}
-
-			console.log("stst  " + gsStartPage.gStartPage);
-			console.log("eded  " + gsEndPage.gEndPage);
-
-			for (var i = gsStartPage.gStartPage; i <= gsEndPage.gEndPage; i++) {
-				html += '<li class="page-item ';
-				if (page == i) {
-					html += ' active';
-				} else {
-					html += '';
-				}
-
-				html += '" style="cursor: pointer;"><a class="page-link" onClick="';
-				html += 'getVEList('
-					+ ((i - 1) * gsListSize.gListSize) + ','
-					+ gsListSize.gListSize + ')';
-				html += '">' + i + '</a></li>';
-			}
-
-			if (gsNext.gNext) {
-				html += '<li class="page-item"><a class="page-link" href="#" onClick="';
-				html += '">'
-					+ '다음' + '</a></li>';
-			}
-
-			html += '</ul>'
-			$("#paginationBoxVE").html(html);
-		}
-	});
-}
-
-function getVEList(page, range) {
+function getVEList(page, listSize) {
 	var url = "/dashVEList/getVEList";
 	var headers = {
 		"Content-Type": "application/json",
 		"X-HTTP-Method-Override": "POST"
 	};
 
-	console.log(page);
-	console.log(range);
-
 	var paramData = JSON.stringify({
 		"num1": page,
-		"num2": range
+		"num2": listSize
 	});
 
 	var html = "";
@@ -439,30 +324,269 @@ function getVEList(page, range) {
 				}
 			}
 			$("#tbVE").html(html);
-			getVEPaging(page / gsListSize.gListSize + 1, 1);
+
+			var rangesize = 6;
+			var url = "/dashVEList/getVEListCnt";
+			var fns = "getVEList";
+			var idd = "paginationBoxVE";
+
+			getPaging(page, listSize, rangesize, url, fns, idd);
 		}
 	});
 }
 
-ClassicEditor
-	.create(document.querySelector('#cont-info'))
-	.catch(error => {
-		console.error(error);
+function getInfoList(page, listSize) {
+	var url = "/dashInfoList/getInfoList";
+	var headers = {
+		"Content-Type": "application/json",
+		"X-HTTP-Method-Override": "POST"
+	};
+
+	var paramData = JSON.stringify({
+		"num1": page,
+		"num2": listSize
 	});
 
+	var html = "";
 
+	$.ajax({
+		url: url,
+		headers: headers,
+		type: 'POST',
+		data: paramData,
+		dataType: 'json',
+
+		success: function(r) {
+			if (r.length < 1) {
+				html = '<tr>' + '<td colspan="5" align="center">'
+					+ '데이터가 없습니다.' + '</td>' + '</tr>'
+			} else {
+				for (var i = 0; i < r.length; i++) {
+					console.log("qweeew   " + r[i].insert_date);
+					console.log("qweeew   " + r[i].date_end);
+					var calTimeIn = getCalTime(r[i].insert_date);
+					var calTimeEnd = getCalTime(r[i].date_end);
+					var calTimeCom = getCal(r[i].date_com);
+					var cName = 'dash-collapse-' + (i + 1);
+
+					var infoNum = 'info-num' + (i + 1);
+
+
+					html += '<tr> <td>'
+					html += '<input type="hidden" id="' + infoNum + '" value="' + r[i].no + '">';
+
+					var dashCollapse = 'dash-collapse-01' + (i + 1);
+
+					html += '<div class="dash-info" data-toggle="collapse" href="#' + cName + '" aria-expanded="true" aria-controls="' + dashCollapse + '">';
+					html += '<div class="dash-info-item">';
+
+					var str_Img = "";
+					if (r[i].date_com != null) {
+						str_Img = '<img src="' + '/resources/common/img/comp.png' + '" width="15px" height="15px" alt="">';
+					} else {
+						if (r[i].grade > 0) {
+							str_Img = '<img src="' + '/resources/common/img/neu.png' + '" width="15px" height="15px" alt="">';
+						}
+
+						var ndate = new Date();
+
+						var tmpM = "";
+						if (ndate.getMonth() + 1 < 10) {
+							tmpM = "0" + (ndate.getMonth() + 1);
+						} else {
+							tmpM = ndate.getMonth() + 1;
+						}
+
+						var tmpD = "";
+						if (ndate.getDate() < 10) {
+							tmpD = "0" + ndate.getDate();
+						} else {
+							tmpD = ndate.getDate();
+						}
+
+						var tmpH = "";
+						if (ndate.getHours() < 10) {
+							tmpH = "0" + ndate.getHours();
+						} else {
+							tmpH = ndate.getHours();
+						}
+
+						var tmpMi = "";
+						if (ndate.getMinutes() < 10) {
+							tmpMi = "0" + ndate.getMinutes();
+						} else {
+							tmpMi = ndate.getMinutes();
+						}
+
+						var nDate = ndate.getFullYear() + '-' + tmpM + '-' + tmpD + ' ' + tmpH + ':' + tmpMi + ':00';
+
+						if (r[i].date_end < nDate) {
+							str_Img = '<img src="' + '/resources/common/img/stop.png' + '" width="15px" height="15px" alt="">';
+						}
+					}
+					html += str_Img;
+					html += '</div>';
+					html += '<div class="dash-info-item">' + r[i].title + '</div>';
+					html += '<div class="dash-info-item">' + r[i].name + '</div>';
+
+					if (r[i].date_end == null || r[i].date_end == "") {
+						html += '<div class="dash-info-item">' + '<i class="las la-history"></i>' + '기한 없음' + '</div>';
+					} else {
+						html += '<div class="dash-info-item">' + '<i class="las la-history"></i>' + calTimeEnd + '</div>';
+
+					}
+					html += '<div class="dash-info-item">' + calTimeIn + '</div>';
+					html += '</div>';
+
+					var colla = 'collapse-' + (i + 1);
+
+					html += '<div id="' + cName + '" class="panel-collapse collapse ' + colla + '" role="tabpanel"><br><div class="collapse-line">';
+					var dashCollapseTitlec = 'dash-collapse-titlec';
+					var dashCollapseTitle = 'dash-collapse-' + (i + 1) + '-title';
+					html += '<div class="' + dashCollapseTitlec + '" id="' + dashCollapseTitle + '"><i class="far fa-bookmark"></i>&nbsp;&nbsp;' + r[i].title + '</div>';
+
+					var dashCollapseName = 'dash-collapse-' + (i + 1) + '-name';
+					var dashCollapseCount = 'dash-collapse-' + (i + 1) + '-count';
+					var dashCollapseChoc = 'dash-collapse-choc';
+					html += '<div><span class="' + dashCollapseChoc + '" id="' + dashCollapseName + '">' + calTimeIn + '</span> <span class="' + dashCollapseChoc + '" id="' + dashCollapseCount + '">' + r[i].name + '</span></div>';
+					var dashCollapseGrade = 'dash-collapse-' + (i + 1) + '-grade';
+					var dashCollapseEnd = 'dash-collapse-' + (i + 1) + '-end';
+					var dashCollapseChocc = 'dash-collapse-chocc';
+
+					var ggrad = '';
+					if (r[i].grade > 0) {
+						ggrad = '<i class="fas fa-exclamation-triangle"></i>중요';
+					}
+
+					html += '<div><span class="' + dashCollapseChocc + '" id="' + dashCollapseGrade + '">' + ggrad + '</span> <span class="' + dashCollapseChocc + '" id="' + dashCollapseEnd + '">';
+					if (r[i].date_end == null || r[i].date_end == "") {
+						html += '<i class="las la-history"></i>' + '기한 없음';
+					} else {
+						html += '<i class="las la-history"></i>' + calTimeEnd + '까지';
+					}
+					html += '</span></div>';
+
+					var dashCollapseBodyc = 'dash-collapse-bodyc';
+					var dashCollapseBody = 'dash-collapse-' + (i + 1) + '-body';
+					html += '<div class="' + dashCollapseBodyc + '" id="' + dashCollapseBody + '">' + r[i].contents + '</div>';
+
+					html += '</div><div class="dash-collapse-btn">';
+					html += '<div class="dash-collapse-btn-item">';
+					html += '<a class="BaseButton BaseButton--skinGray size_default"><i class="las la-trash-alt"></i>&nbsp;삭제 </a>';
+					html += '<a class="BaseButton BaseButton--skinGray size_default" id="change-info" data-toggle="modal" data-target="#modal-info" onclick="showModalInfo(' + (i + 1) + ')"><i class="las la-sync"></i>&nbsp;수정</a>';
+					html += '</div>';
+					html += '<div class="dash-collapse-btn-item"><div><a class="BaseButton BaseButton--skinGreen size_default"><i class="las la-check-square"></i>&nbsp;완료</a></div>';
+					html += '</div></div>';
+					html += '</tr> </td>';
+				}
+			}
+			$("#tbInfo").html(html);
+
+			var rangesize = 6;
+			var url = "/dashInfoList/getInfoListCnt";
+			var fns = "getInfoList";
+			var idd = "paginationBoxInfo";
+
+			getPaging(page, listSize, rangesize, url, fns, idd);
+		}
+	});
+}
+
+function getPaging(page, listSize, rangesize, url, fns, idd) {
+	var headers = {
+		"Content-Type": "application/json",
+		"X-HTTP-Method-Override": "POST"
+	};
+
+	var html = "";
+
+	$.ajax({
+		url: url,
+		headers: headers,
+		type: 'POST',
+
+		success: function(r) {
+			const pagecla = new pageCla(page, r, listSize, rangesize);
+			html += '<div><nav><ul class="pagination pagination-sm">';
+			if (pagecla.prEv) {
+				html += '<li class="page-item">';
+				html += '<a class="page-link" href="#" onClick="';
+				html += '">';
+				html += '<span aria-hidden="true">&laquo;</span>';
+				html += '</a></li>';
+			}
+
+			for (var i = pagecla.startPage; i <= pagecla.endPage; i++) {
+				html += '<li class="page-item ';
+				if (pagecla.paGe == i) {
+					html += ' active';
+				} else {
+					html += '';
+				}
+
+				html += '" style="cursor: pointer;"><a class="page-link" onClick="';
+				html += fns + '('
+					+ ((i - 1) * pagecla.listSize) + ','
+					+ pagecla.listSize + ')';
+				html += '">' + i + '</a></li>';
+			}
+
+			if (pagecla.neXt) {
+				html += '<li class="page-item"><a class="page-link" href="#" onClick="';
+				html += '">'
+					+ '<span aria-hidden="true">&raquo;</span>' + '</a></li>';
+			}
+			html += '</ul></nav></div>'
+			var iidd = "#" + idd;
+			$(iidd).html(html);
+		}
+	});
+}
+
+
+$('#check2-info').change(function() {
+	var imChecked = $(this).is(":checked");
+
+	if (imChecked) {
+		$('#info-limit').hide();
+	} else {
+		$('#info-limit').show();
+	}
+});
+
+function showModalInfo(num) {
+	var title = $('#' + 'dash-collapse-' + num + '-title').text();
+	var stD = getCalTimeInput($('#' + 'dash-collapse-' + num + '-name').text());
+	var grade = $('#' + 'dash-collapse-' + num + '-grade').text();
+	var endD = $('#' + 'dash-collapse-' + num + '-end').text();
+	var cont = $('#' + 'dash-collapse-' + num + '-body').text();
+
+
+	console.log("ttrrtter   " + title);
+	console.log("ttrrtter   " + stD);
+	console.log("ttrrtter   " + grade);
+	console.log("ttrrtter   " + endD);
+	console.log("ttrrtter   " + cont);
+
+	$('#title-info').val(title);
+	$('#date-info').val(stD);
+	$('#cont-info').html('<div>' + cont + '</div>');
+}
 
 $(document).on(
 	'click',
-	'#okok',
+	'#new-info',
 	function() {
+		var w = 800;
+		var h = 700;
 
-		console.log($('#date-info').val());
-		console.log(typeof $('#date-info').val());
-	});
+		var xPos = (document.body.offsetWidth) - w;
+		xPos += window.screenLeft;
+		var yPos = 10;
 
-
-
+		window.open('/infomation', 'ot', "width=" + w + ", height=" + h + ", left=" + xPos + ", top=" + yPos + ", menubar=yes, status=yes, titlebar=yes, resizable=no");
+	}
+);
 
 
 

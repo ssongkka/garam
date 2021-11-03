@@ -27,7 +27,7 @@
 
 .dash-cal-h {
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 }
 
 .dash-cal-h-item {
@@ -36,7 +36,12 @@
 }
 
 .dash-cal-h-item1 {
-	
+	width: 5%;
+	cursor: pointer;
+}
+
+.dash-cal-h-item1:hover {
+	background: red;
 }
 
 .dash-cal-h-item2 {
@@ -44,7 +49,12 @@
 }
 
 .dash-cal-h-item3 {
-	
+	width: 5%;
+	cursor: pointer;
+}
+
+.dash-cal-h-item3:hover {
+	background: red;
 }
 
 .dash-cal-con {

@@ -59,8 +59,6 @@ function setCalendar(now_D, day) {
 }
 
 function setCalendarHol(stD, endD) {
-	console.log("cccc  " + stD);
-	console.log("cccc  " + endD);
 	var url = "/dashMakeCal/getCalMake";
 	var headers = {
 		"Content-Type": "application/json",
@@ -111,8 +109,6 @@ function setCalendarHol(stD, endD) {
 						ttmp1 = tmp1[0] + ttmpM + tmp1[2];
 					}
 
-					console.log(ttmp + "  " + ttmp1);
-					console.log(ttmp == ttmp1);
 					if (ttmp == ttmp1) {
 						$(calID).css('color', '#CF2F11');
 					}
@@ -228,8 +224,6 @@ function setCaldays(day) {
 
 
 		success: function(r) {
-			console.log("aa   " + r.length);
-			console.log("aa   " + r);
 			if (r.length > 0) {
 				cal1 = "음력 " + r[0].lunar_Cal;
 

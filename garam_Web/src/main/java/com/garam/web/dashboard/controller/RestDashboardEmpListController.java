@@ -29,7 +29,7 @@ public class RestDashboardEmpListController {
 	private DashboardService dashBoardService;
 
 	@RequestMapping(value = "/getEmpList", method = { RequestMethod.POST })
-	public List<EmployeeList_VO> getEmpList(@RequestBody ParaInt2VO paraint2VO, Model model) throws Exception {
+	public List<EmployeeList_VO> getEmpList(@RequestBody ParaInt2VO paraint2VO) throws Exception {
 		return dashBoardService.getEmpList(paraint2VO);
 	}
 

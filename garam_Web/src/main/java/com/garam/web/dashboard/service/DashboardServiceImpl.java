@@ -17,6 +17,7 @@ import com.garam.common.model.VehicleList_VO;
 import com.garam.common.model.para.ParaInt2VO;
 import com.garam.common.model.para.ParaStr2VO;
 import com.garam.web.dashboard.dao.DashboardDAO;
+import com.garam.web.dashboard.model.info_VO;
 
 @Service
 public class DashboardServiceImpl implements DashboardService {
@@ -69,4 +70,13 @@ public class DashboardServiceImpl implements DashboardService {
 		return dash_Dao.getVEListCnt();
 	}
 
+	@Override
+	public List<info_VO> getInfoList(ParaInt2VO paraint2VO) throws Exception {
+		return dash_Dao.getInfoList(paraint2VO);
+	}
+
+	@Override
+	public int getInfoListCnt() throws Exception {
+		return dash_Dao.getInfoListCnt();
+	}
 }
