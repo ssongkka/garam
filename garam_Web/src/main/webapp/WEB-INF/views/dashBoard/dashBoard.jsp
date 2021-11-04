@@ -371,58 +371,6 @@
 						<tbody id="tbInfo"></tbody>
 					</table>
 					<div class="pgBox" id="paginationBoxInfo"></div>
-					<!-- Modal -->
-					<div class="modal fade" id="modal-info" tabindex="-1" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-									<h4 class="modal-title" id="myModalLabel">Modal title</h4>
-								</div>
-								<div class="modal-body" id="modal-body-info">
-									<form>
-										<input type="hidden" value="" id="info-num">
-										<div>
-											<label> <input type="checkbox" id="check1-info"
-												value="중요">&nbsp;&nbsp;중요&nbsp;&nbsp;
-											</label> <label> <input type="checkbox" id="check2-info"
-												value="기한없음" checked>&nbsp;&nbsp;기한없음
-											</label>
-										</div>
-										<div class="form-group input-group-lg">
-											<h4>
-												<label for="title-info"> 제목 </label>
-											</h4>
-											<input type="text" class="form-control" id="title-info"
-												placeholder="제목을 입력하세요">
-										</div>
-										<div class="form-group" id="info-limit">
-											<h4>
-												<label for="title-info">기한</label>
-											</h4>
-											<input type="datetime-local" class="form-control"
-												id="date-info" value="">
-										</div>
-										<div class="form-group">
-											<h4>
-												<label for="cont-info">내용</label>
-											</h4>
-											<textarea class="summernote" name="editordata" id="cont-info"></textarea>
-										</div>
-										<button type="button" class="btn btn-default"
-											data-dismiss="modal">닫 기</button>
-										<button type="button" class="btn btn-default" id="cont-save">저
-											장</button>
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- Modal -->
 				</div>
 			</div>
 		</div>

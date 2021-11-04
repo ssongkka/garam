@@ -1,8 +1,6 @@
 package com.garam.web.infomation.model;
 
-import com.garam.common.util.cal_Util;
-
-public class InfomationListVO {
+public class InfomationListParamVO {
 	int no;
 	String insert_date;
 	String date_end;
@@ -22,7 +20,7 @@ public class InfomationListVO {
 	}
 
 	public String getInsert_date() {
-		return cal_Util.dateTime_DBtoHTML(insert_date);
+		return insert_date;
 	}
 
 	public void setInsert_date(String insert_date) {
@@ -30,11 +28,7 @@ public class InfomationListVO {
 	}
 
 	public String getDate_end() {
-		if (date_end != null) {
-			return cal_Util.dateTime_DBtoHTML(date_end);
-		} else {
-			return "없음";
-		}
+		return date_end;
 	}
 
 	public void setDate_end(String date_end) {
@@ -42,11 +36,7 @@ public class InfomationListVO {
 	}
 
 	public String getDate_com() {
-		if (date_com != null) {
-			return cal_Util.dateTime_DBtoHTML(date_com);
-		} else {
-			return "미완료";
-		}
+		return date_com;
 	}
 
 	public void setDate_com(String date_com) {
@@ -95,9 +85,9 @@ public class InfomationListVO {
 
 	@Override
 	public String toString() {
-		return "InfomationListVO [no=" + no + ", insert_date=" + insert_date + ", date_end=" + date_end + ", date_com="
-				+ date_com + ", grade=" + grade + ", name=" + name + ", title=" + title + ", contents=" + contents
-				+ ", trash=" + trash + ", getNo()=" + getNo() + ", getInsert_date()=" + getInsert_date()
+		return "InfomationListParamVO [no=" + no + ", insert_date=" + insert_date + ", date_end=" + date_end
+				+ ", date_com=" + date_com + ", grade=" + grade + ", name=" + name + ", title=" + title + ", contents="
+				+ contents + ", trash=" + trash + ", getNo()=" + getNo() + ", getInsert_date()=" + getInsert_date()
 				+ ", getDate_end()=" + getDate_end() + ", getDate_com()=" + getDate_com() + ", getGrade()=" + getGrade()
 				+ ", getName()=" + getName() + ", getTitle()=" + getTitle() + ", getContents()=" + getContents()
 				+ ", getTrash()=" + getTrash() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()

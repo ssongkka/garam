@@ -26,7 +26,9 @@
 		</div>
 		<hr>
 
-		<form class="form-horizontal">
+		<form class="form-horizontal" name="insert-form" id="insert-form"
+			role="form" method="post"
+			action="${pageContext.request.contextPath}/infomation/infomationSave">
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<div class="checkbox">
@@ -41,30 +43,34 @@
 				<label for="insert-time" class="col-sm-2 control-label">기&nbsp;&nbsp;한</label>
 				<div class="col-sm-10">
 					<input type="datetime-local" class="form-control" id="insert-time"
-						placeholder="">
+						value="">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="insert-title" class="col-sm-2 control-label">제&nbsp;&nbsp;목</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="insert-title"
+					<input type="text" class="form-control" name="title" id="title"
 						placeholder="공지 제목을 입력해 주세요.">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="insert-cont" class="col-sm-2 control-label">내&nbsp;&nbsp;용</label>
 				<div class="col-sm-10">
-					<textarea class="summernote" id="insert-cont" rows="10"></textarea>
+					<textarea class="summernote" name="contents" id="contents"
+						rows="10"></textarea>
 				</div>
 			</div>
 
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default">Sign in</button>
+					<button type="submit" class="btn btn-default" id="insert-btn">Sign
+						in</button>
 				</div>
 			</div>
+			<input type="hidden" name="date_end" id="date_end" value="">
+			<input type="hidden" name="grade" id="grade" value=""> <input
+				type="hidden" name="name" id="name" value="">
 		</form>
-
 	</div>
 </body>
 <script type="text/javascript"

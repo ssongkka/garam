@@ -31,7 +31,7 @@ function getCal(cal) {
 	}
 }
 
-function getCalTimeInput(calTime) {
+function getCalTimeInputJSP(calTime) {
 	var tmpArr = calTime.split(' ');
 	var tmpDate = tmpArr[0];
 	var tmpTime = tmpArr[1];
@@ -43,3 +43,15 @@ function getCalTimeInput(calTime) {
 
 	return rtn;
 }
+
+function getCalTimeInputJSPtoDB(calTime) {
+	var aaa = '2021-04-01T10:30';
+
+	var rtn_Date = calTime.substring(0, 10);
+	var rtn_Time = calTime.substring(11);
+
+	console.log("qqwdqdwdd   " + rtn_Date + ' ' + rtn_Time);
+
+	return rtn_Date + ' ' + rtn_Time;
+}
+

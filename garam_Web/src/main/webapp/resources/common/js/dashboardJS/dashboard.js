@@ -362,8 +362,6 @@ function getInfoList(page, listSize) {
 					+ '데이터가 없습니다.' + '</td>' + '</tr>'
 			} else {
 				for (var i = 0; i < r.length; i++) {
-					console.log("qweeew   " + r[i].insert_date);
-					console.log("qweeew   " + r[i].date_end);
 					var calTimeIn = getCalTime(r[i].insert_date);
 					var calTimeEnd = getCalTime(r[i].date_end);
 					var calTimeCom = getCal(r[i].date_com);
@@ -470,12 +468,7 @@ function getInfoList(page, listSize) {
 					var dashCollapseBody = 'dash-collapse-' + (i + 1) + '-body';
 					html += '<div class="' + dashCollapseBodyc + '" id="' + dashCollapseBody + '">' + r[i].contents + '</div>';
 
-					html += '</div><div class="dash-collapse-btn">';
-					html += '<div class="dash-collapse-btn-item">';
-					html += '<a class="BaseButton BaseButton--skinGray size_default"><i class="las la-trash-alt"></i>&nbsp;삭제 </a>';
-					html += '<a class="BaseButton BaseButton--skinGray size_default" id="change-info" data-toggle="modal" data-target="#modal-info" onclick="showModalInfo(' + (i + 1) + ')"><i class="las la-sync"></i>&nbsp;수정</a>';
 					html += '</div>';
-					html += '<div class="dash-collapse-btn-item"><div><a class="BaseButton BaseButton--skinGreen size_default"><i class="las la-check-square"></i>&nbsp;완료</a></div>';
 					html += '</div></div>';
 					html += '</tr> </td>';
 				}

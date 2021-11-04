@@ -52,16 +52,16 @@ input[type="checkbox"] {
 }
 
 .BaseButton.size_default {
-	min-width: 35px;
-	height: 25px;
-	margin-right: 1rem;
+	min-width: 46px;
+	height: 36px;
+	margin-right: 10px;
 	padding: 0 12px;
-	font-size: 1.2rem;
-	line-height: 25px;
+	font-size: 13px;
+	line-height: 36px;
 }
 
 .BaseButton--skinGray {
-	border: 1 px solid transparent;
+	border: 1px solid transparent;
 	background: #eff0f2;
 	color: #000000;
 }
@@ -73,7 +73,7 @@ input[type="checkbox"] {
 
 .BaseButton {
 	display: inline-block;
-	border-radius: 5px;
+	border-radius: 6px;
 	box-sizing: border-box;
 	font-weight: 700;
 	text-align: center;
