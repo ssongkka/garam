@@ -1,18 +1,6 @@
 $(document).ready(
 	function() {
-		$('.summernote').summernote('reset');
 		$('#insert-timt-div').hide();
-
-		let dateElement = document.getElementById('insert-time');
-		let date = new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, -5);
-		dateElement.value = date;
-		console.log("aa12233   " + dateElement.value);
-		dateElement.setAttribute("min", date);
-
-		if (dateElement.value < date) {
-			alert('현재 시간보다 이전의 날짜는 설정할 수 없습니다.');
-			dateElement.value = date;
-		}
 	}
 );
 

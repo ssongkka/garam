@@ -11,14 +11,16 @@
 
 		SELECT
 
-		no, insert_date,
-		date_end, date_com, grade, name,
+		no, insert_date, edit_date,
+		date_end, date_com, grade,
+		name,
 		title, contents, trash
 
 		FROM information
 
 		ORDER BY
-		grade DESC, date_end
+		grade DESC,
+		date_end
 		ASC;
 
 
@@ -45,8 +47,9 @@
 
 		SELECT
 
-		no, insert_date,
-		date_end, date_com, grade, name,
+		no, insert_date, edit_date,
+		date_end, date_com,
+		grade, name,
 		title, contents, trash
 
 		FROM
@@ -66,6 +69,7 @@
 		INSERT INTO
 		information
 		(insert_date,
+		edit_date,
 		date_end,
 		date_com,
 		grade,
@@ -77,6 +81,7 @@
 		VALUES(
 
 		NOW(),
+		null,
 		#{date_end},
 		null,
 		#{grade},
@@ -95,15 +100,17 @@
 
 		SET
 
-		insert_date = #{insert_date},
+		edit_date = #{edit_date},
 		date_end =
 		#{date_end},
-		date_com = #{date_com},
+		date_com =
+		#{date_com},
 		grade = #{grade},
 		name =
 		#{name},
 		title = #{title},
-		contents = #{contents},
+		contents =
+		#{contents},
 		trash = 1
 
 		WHERE no =

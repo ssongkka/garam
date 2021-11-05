@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.garam.common.model.para.ParameterVO;
 import com.garam.web.infomation.dao.InfomationDAO;
 import com.garam.web.infomation.model.InfomationListVO;
+import com.garam.web.infomation.model.InfomationReplyVO;
 
 @Service
 public class InfomationServiceImpl implements InfomationService {
@@ -25,7 +26,17 @@ public class InfomationServiceImpl implements InfomationService {
 	public String insertInfomation(InfomationListVO infomationListVO) throws Exception {
 
 		int check = this.infomationDAO.insertInfomation(infomationListVO);
-		System.out.println("확인해라     " + check);
+		if (check > 0) {
+			return Integer.toString(infomationListVO.getNo());
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public String updateInfomation(InfomationListVO infomationListVO) throws Exception {
+		int check = this.infomationDAO.updateInfomation(infomationListVO);
+
 		if (check > 0) {
 			return Integer.toString(infomationListVO.getNo());
 		} else {
@@ -57,4 +68,26 @@ public class InfomationServiceImpl implements InfomationService {
 		return check;
 	}
 
+	@Override
+	public List<InfomationReplyVO> getInfomationReplyList(ParameterVO parameterVO) throws Exception {
+		return infomationDAO.getInfomationReplyList(parameterVO);
+	}
+
+	@Override
+	public int insertInfomationReply(InfomationReplyVO infomationReplyVO) throws Exception {
+		int check = infomationDAO.insertInfomationReply(infomationReplyVO);
+		return check;
+	}
+
+	@Override
+	public int updateInfomationReply(InfomationReplyVO infomationReplyVO) throws Exception {
+		int check = this.infomationDAO.updateInfomationReply(infomationReplyVO);
+		return check;
+	}
+
+	@Override
+	public int deleteInfomationReply(ParameterVO parameterVO) throws Exception {
+		int check = this.infomationDAO.deleteInfomationReply(parameterVO);
+		return check;
+	}
 }

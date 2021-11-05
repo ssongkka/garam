@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.garam.common.model.para.ParameterVO;
 import com.garam.web.infomation.model.InfomationListVO;
+import com.garam.web.infomation.model.InfomationReplyVO;
 
 @Repository
 public class InfomationDAOImpl implements InfomationDAO {
@@ -49,5 +50,28 @@ public class InfomationDAOImpl implements InfomationDAO {
 	@Override
 	public int undoCompleteInfomation(ParameterVO parameterVO) throws Exception {
 		return sqlSession.update("com.garam.web.infomation.Infomation_Mapper.undoCompleteInfomation", parameterVO);
+	}
+
+	@Override
+	public List<InfomationReplyVO> getInfomationReplyList(ParameterVO parameterVO) throws Exception {
+		return sqlSession.selectList("com.garam.web.infomation.InfomationReply_Mapper.getInfomationReplyList",
+				parameterVO);
+	}
+
+	@Override
+	public int insertInfomationReply(InfomationReplyVO infomationReplyVO) throws Exception {
+		return sqlSession.insert("com.garam.web.infomation.InfomationReply_Mapper.insertInfomationReply",
+				infomationReplyVO);
+	}
+
+	@Override
+	public int updateInfomationReply(InfomationReplyVO infomationReplyVO) throws Exception {
+		return sqlSession.update("com.garam.web.infomation.InfomationReply_Mapper.updateInfomationReply",
+				infomationReplyVO);
+	}
+
+	@Override
+	public int deleteInfomationReply(ParameterVO parameterVO) throws Exception {
+		return sqlSession.update("com.garam.web.infomation.InfomationReply_Mapper.deleteInfomationReply", parameterVO);
 	}
 }

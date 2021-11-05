@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.garam.web.dashboard.service.DashboardService;
 import com.garam.web.infomation.model.InfomationListVO;
+import com.garam.web.infomation.model.InfomationReplyVO;
 import com.garam.web.infomation.service.InfomationService;
 
 @Controller
@@ -28,29 +29,46 @@ public class InfomationController {
 	}
 
 	@RequestMapping(value = "/infomation/infomationForm")
-	public String infomationForm() {
+	public String infomationForm(@ModelAttribute("InfomationListVO") InfomationListVO infomationListVO, Model model) {
 		return "infomation/infomationForm";
 	}
 
 	@RequestMapping(value = "/infomation/infomationSave", method = RequestMethod.POST)
-	public String infomationSave(Model model,
-			@ModelAttribute("InfomationListParamVO") InfomationListVO infomationListVO) throws Exception {
+	public String infomationSave(Model model, @ModelAttribute("InfomationListVO") InfomationListVO infomationListVO,
+			@RequestParam("mode") String mode) throws Exception {
 
-		String check = this.infomationService.insertInfomation(infomationListVO);
-		if (check != null) {
-			model.addAttribute("msg", "등록 완료");
-			model.addAttribute("url", "/infomation");
-			return "layout/alertInfo";
+		if (mode.equals("edit")) {
+			String check = this.infomationService.updateInfomation(infomationListVO);
+			if (check != null) {
+				int num = infomationListVO.getNo();
+
+				model.addAttribute("msg", "수정 완료");
+				model.addAttribute("url", "/infomation/infomationContent" + "?no=" + num);
+				return "layout/alertInfo";
+			} else {
+				model.addAttribute("msg", "수정 실패!");
+				model.addAttribute("url", "/infomation/infomationForm");
+				return "layout/alertInfo";
+			}
 		} else {
-			model.addAttribute("msg", "등록 실패!");
-			model.addAttribute("url", "/infomation/infomationForm");
-			return "layout/alertInfo";
+			String check = this.infomationService.insertInfomation(infomationListVO);
+			if (check != null) {
+				model.addAttribute("msg", "등록 완료");
+				model.addAttribute("url", "/infomation");
+				return "layout/alertInfo";
+			} else {
+				model.addAttribute("msg", "등록 실패!");
+				model.addAttribute("url", "/infomation/infomationForm");
+				return "layout/alertInfo";
+			}
 		}
+
 	}
 
 	@RequestMapping(value = "/infomation/infomationContent", method = RequestMethod.GET)
 	public String getInfomationContent(Model model, @RequestParam("no") int no) throws Exception {
 		model.addAttribute("infomationContent", infomationService.getInfomationContent(no));
+		model.addAttribute("infomationReplyVO", new InfomationReplyVO());
 		return "infomation/infomationContent";
 	}
 
@@ -69,5 +87,15 @@ public class InfomationController {
 			model.addAttribute("url", "/infomation/infomationForm");
 			return "layout/alertInfo";
 		}
+	}
+
+	@RequestMapping(value = "/infomation/infomationEdit")
+	public String editForm(@RequestParam("no") int no, @RequestParam("mode") String mode, Model model)
+			throws Exception {
+		model.addAttribute("infomationContent", infomationService.getInfomationContent(no));
+		model.addAttribute("mode", mode);
+		model.addAttribute("InfomationListVO", new InfomationListVO());
+
+		return "infomation/infomationForm";
 	}
 }

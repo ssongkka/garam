@@ -1,3 +1,8 @@
+function resize(obj) {
+	obj.style.height = "1px";
+	obj.style.height = (12 + obj.scrollHeight) + "px";
+}
+
 function getCalTime(calTime) {
 	if (calTime != null) {
 		var tmp_Cal = calTime.substring(0, 10);
@@ -32,13 +37,13 @@ function getCal(cal) {
 }
 
 function getCalTimeInputJSP(calTime) {
+
 	var tmpArr = calTime.split(' ');
 	var tmpDate = tmpArr[0];
 	var tmpTime = tmpArr[1];
 
-	var tmpArrDate = tmpDate.split('.');
+	var rtn = tmpDate + "T" + tmpTime;
 
-	var rtn = tmpArrDate[0] + '-' + tmpArrDate[1] + '-' + tmpArrDate[2] + 'T' + tmpTime;
 	console.log("ttrrtter   " + rtn);
 
 	return rtn;

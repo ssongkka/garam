@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper
+	namespace="com.garam.web.infomation.InfomationReply_Mapper">
+
+	<select id="getInfomationReplyList"
+		resultType="com.garam.web.infomation.model.InfomationReplyVO"
+		parameterType="com.garam.common.model.para.ParameterVO">
+
+		SELECT rno, no, parent_no, depth, seq, insert_date,
+		edit_date, content, name, trash
+
+		FROM
+
+		infomation_reply
+
+		WHERE
+
+		no =
+		#{num1Int}
+
+		AND
+
+		trash = 1
+
+		ORDER BY IF(ISNULL(parent_no), rno, parent_no),
+		seq;
+	</select>
+
+	<select id="getInfoReplyListCnt" resultType="int"
+		parameterType="com.garam.common.model.para.ParameterVO">
+
+		SELECT
+
+		count(*)
+
+		FROM
+
+		infomation_reply
+
+		WHERE
+
+		rno = #{num1Int}
+
+		AND
+
+		trash = 1;
+	</select>
+
+	<insert id="insertInfomationReply"
+		parameterType="com.garam.web.infomation.model.InfomationReplyVO">
+
+		INSERT INTO
+
+		infomation_reply
+
+		(
+		no,
+		parent_no,
+		depth,
+		seq,
+		insert_date,
+		edit_date,
+		content,
+		name,
+		trash
+		)
+
+		VALUES
+
+		(
+		#{no},
+		#{parent_no},
+		#{depth},
+		#{seq},
+		NOW(),
+		NULL,
+		#{content},
+		#{name},
+		1
+		);
+	</insert>
+
+	<update id="updateInfomationReply"
+		parameterType="com.garam.web.infomation.model.InfomationReplyVO">
+
+		UPDATE
+
+		infomation_reply
+
+		SET
+
+		edit_date = #{edit_date},
+		content = #{content},
+
+		WHERE
+
+		rno = #{rno}
+	</update>
+
+	<update id="deleteInfomationReply"
+		parameterType="com.garam.common.model.para.ParameterVO">
+
+		UPDATE
+
+		infomation_reply
+
+		SET
+
+		trash = 0
+
+		WHERE
+
+		rno = #{num1Int};
+	</update>
+
+</mapper>
+
+
+

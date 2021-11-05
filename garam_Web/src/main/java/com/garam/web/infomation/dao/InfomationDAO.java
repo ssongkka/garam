@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.garam.common.model.para.ParameterVO;
 import com.garam.web.infomation.model.InfomationListVO;
+import com.garam.web.infomation.model.InfomationReplyVO;
 
 public interface InfomationDAO {
 	public List<InfomationListVO> getInfomationList() throws Exception;
@@ -19,4 +20,12 @@ public interface InfomationDAO {
 	public int undoCompleteInfomation(ParameterVO parameterVO) throws Exception;
 
 	public int deleteInfomation(int no) throws Exception;
+
+	public List<InfomationReplyVO> getInfomationReplyList(ParameterVO parameterVO) throws Exception;
+
+	public int insertInfomationReply(InfomationReplyVO infomationReplyVO) throws Exception;
+
+	public int updateInfomationReply(InfomationReplyVO infomationReplyVO) throws Exception;
+
+	public int deleteInfomationReply(ParameterVO parameterVO) throws Exception;
 }
