@@ -66,7 +66,13 @@ function fn_UndoCompleteContent(no) {
 }
 
 function fn_deleteContent(no) {
-	var url = "/infomation/infomationdDelete";
-	url = url + "?no=" + no;
-	location.href = url;
+	var check = confirm("삭제하시겠습니까?");
+
+	console.log("qdwqwddq  " + check);
+
+	if (check) {
+		var url = "/infomation/infomationdDelete";
+		url = url + "?no=" + no;
+		location.href = url;
+	}
 }

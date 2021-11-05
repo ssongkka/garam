@@ -66,7 +66,7 @@
 							<c:otherwise>
 								<a
 									class="BaseButton size_default BaseButton--skinWarring fas fa-undo"
-									onClick="fn_CompleteContent(<c:out
+									onClick="fn_UndoCompleteContent(<c:out
 											value="${infomationContent.no}" />)">미완료</a>
 							</c:otherwise>
 						</c:choose>

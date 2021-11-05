@@ -67,8 +67,7 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th>제목</th>
-					<th>제목</th>
+					<th colspan="2">제목</th>
 					<th>기한</th>
 					<th>작성일</th>
 					<th>작성일</th>
@@ -76,9 +75,9 @@
 			</thead>
 			<tbody>
 				<c:choose>
-					<c:when test="${empty infoList }">
+					<c:when test="${empty infoList}">
 						<tr>
-							<td colspan="4" align="center">데이터가 없습니다.</td>
+							<td colspan="5" align="center">데이터가 없습니다.</td>
 						</tr>
 					</c:when>
 
@@ -86,11 +85,24 @@
 						<c:forEach var="list" items="${infoList}">
 							<tr>
 								<c:choose>
-									<c:when test="${empty infoList }">
+									<c:when test="${list.date_com_Ch != '미완료'}">
+										<td><img src="/resources/common/img/comp.png"
+											style="width: 30px; height: 30px; border-radius: 50%;" alt="">
+										</td>
 									</c:when>
+									<c:otherwise>
+										<c:choose>
+											<c:when test="${list.grade > 0}">
+												<td><img src="/resources/common/img/neu.png"
+													style="width: 30px; height: 30px; border-radius: 50%;"
+													alt=""></td>
+											</c:when>
+											<c:otherwise>
+												<td></td>
+											</c:otherwise>
+										</c:choose>
+									</c:otherwise>
 								</c:choose>
-								<td><img src="/resources/common/img/comp.png"
-									style="width: 30px; height: 30px; border-radius: 50%;" alt=""></td>
 								<td style="text-align: left;"><a href="#"
 									onClick="fn_contentView(<c:out
 											value="${list.no}" />)">
