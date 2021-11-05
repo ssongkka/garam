@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.garam.web.infomation.model.InfomationListParamVO;
+import com.garam.common.model.para.ParameterVO;
 import com.garam.web.infomation.model.InfomationListVO;
 
 @Repository
@@ -27,13 +27,13 @@ public class InfomationDAOImpl implements InfomationDAO {
 	}
 
 	@Override
-	public int insertInfomation(InfomationListParamVO infomationListParamVO) throws Exception {
-		return sqlSession.insert("com.garam.web.infomation.Infomation_Mapper.insertInfomation", infomationListParamVO);
+	public int insertInfomation(InfomationListVO infomationListVO) throws Exception {
+		return sqlSession.insert("com.garam.web.infomation.Infomation_Mapper.insertInfomation", infomationListVO);
 	}
 
 	@Override
-	public int updateInfomation(InfomationListParamVO infomationListParamVO) throws Exception {
-		return sqlSession.update("com.garam.web.infomation.Infomation_Mapper.updateInfomation", infomationListParamVO);
+	public int updateInfomation(InfomationListVO infomationListVO) throws Exception {
+		return sqlSession.update("com.garam.web.infomation.Infomation_Mapper.updateInfomation", infomationListVO);
 	}
 
 	@Override
@@ -42,7 +42,12 @@ public class InfomationDAOImpl implements InfomationDAO {
 	}
 
 	@Override
-	public int completeInfomation(int no) throws Exception {
-		return sqlSession.update("com.garam.web.infomation.Infomation_Mapper.completeInfomation", no);
+	public int completeInfomation(ParameterVO parameterVO) throws Exception {
+		return sqlSession.update("com.garam.web.infomation.Infomation_Mapper.completeInfomation", parameterVO);
+	}
+
+	@Override
+	public int undoCompleteInfomation(ParameterVO parameterVO) throws Exception {
+		return sqlSession.update("com.garam.web.infomation.Infomation_Mapper.undoCompleteInfomation", parameterVO);
 	}
 }

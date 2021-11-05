@@ -85,6 +85,10 @@
 					<c:when test="${!empty infoList}">
 						<c:forEach var="list" items="${infoList}">
 							<tr>
+								<c:choose>
+									<c:when test="${empty infoList }">
+									</c:when>
+								</c:choose>
 								<td><img src="/resources/common/img/comp.png"
 									style="width: 30px; height: 30px; border-radius: 50%;" alt=""></td>
 								<td style="text-align: left;"><a href="#"
@@ -92,10 +96,9 @@
 											value="${list.no}" />)">
 										<c:out value="${list.title}" />
 								</a></td>
-								<td><c:out value="${list.date_end}" /></td>
+								<td><c:out value="${list.date_end_Ch}" /></td>
 								<td><c:out value="${list.name}" /></td>
-
-								<td><c:out value="${list.insert_date}" /></td>
+								<td><c:out value="${list.insert_date_Ch}" /></td>
 							</tr>
 						</c:forEach>
 					</c:when>

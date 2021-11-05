@@ -13,6 +13,11 @@ public class InfomationListVO {
 	String contents;
 	int trash;
 
+	String insert_date_Ch;
+	String date_end_Ch;
+	String date_com_Ch;
+	String grade_Ch;
+
 	public int getNo() {
 		return no;
 	}
@@ -22,7 +27,7 @@ public class InfomationListVO {
 	}
 
 	public String getInsert_date() {
-		return cal_Util.dateTime_DBtoHTML(insert_date);
+		return insert_date;
 	}
 
 	public void setInsert_date(String insert_date) {
@@ -30,11 +35,7 @@ public class InfomationListVO {
 	}
 
 	public String getDate_end() {
-		if (date_end != null) {
-			return cal_Util.dateTime_DBtoHTML(date_end);
-		} else {
-			return "없음";
-		}
+		return date_end;
 	}
 
 	public void setDate_end(String date_end) {
@@ -42,11 +43,7 @@ public class InfomationListVO {
 	}
 
 	public String getDate_com() {
-		if (date_com != null) {
-			return cal_Util.dateTime_DBtoHTML(date_com);
-		} else {
-			return "미완료";
-		}
+		return date_com;
 	}
 
 	public void setDate_com(String date_com) {
@@ -93,15 +90,46 @@ public class InfomationListVO {
 		this.trash = trash;
 	}
 
+	public String getInsert_date_Ch() {
+		return cal_Util.dateTime_DBtoHTML(this.getInsert_date());
+	}
+
+	public String getDate_end_Ch() {
+		if (this.getDate_end() != null) {
+			return cal_Util.dateTime_DBtoHTML(this.getDate_end());
+		} else {
+			return "없음";
+		}
+	}
+
+	public String getDate_com_Ch() {
+		if (this.getDate_com() != null) {
+			return cal_Util.dateTime_DBtoHTML(this.getDate_com());
+		} else {
+			return "미완료";
+		}
+	}
+
+	public String getGrade_Ch() {
+		if (this.getGrade() > 0) {
+			return "중요";
+		} else {
+			return "";
+		}
+	}
+
 	@Override
 	public String toString() {
-		return "InfomationListVO [no=" + no + ", insert_date=" + insert_date + ", date_end=" + date_end + ", date_com="
-				+ date_com + ", grade=" + grade + ", name=" + name + ", title=" + title + ", contents=" + contents
-				+ ", trash=" + trash + ", getNo()=" + getNo() + ", getInsert_date()=" + getInsert_date()
-				+ ", getDate_end()=" + getDate_end() + ", getDate_com()=" + getDate_com() + ", getGrade()=" + getGrade()
-				+ ", getName()=" + getName() + ", getTitle()=" + getTitle() + ", getContents()=" + getContents()
-				+ ", getTrash()=" + getTrash() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return "InfomationListParamVO [no=" + no + ", insert_date=" + insert_date + ", date_end=" + date_end
+				+ ", date_com=" + date_com + ", grade=" + grade + ", name=" + name + ", title=" + title + ", contents="
+				+ contents + ", trash=" + trash + ", insert_date_Ch=" + insert_date_Ch + ", date_end_Ch=" + date_end_Ch
+				+ ", date_com_Ch=" + date_com_Ch + ", grade_Ch=" + grade_Ch + ", getNo()=" + getNo()
+				+ ", getInsert_date()=" + getInsert_date() + ", getDate_end()=" + getDate_end() + ", getDate_com()="
+				+ getDate_com() + ", getGrade()=" + getGrade() + ", getName()=" + getName() + ", getTitle()="
+				+ getTitle() + ", getContents()=" + getContents() + ", getTrash()=" + getTrash()
+				+ ", getInsert_date_Ch()=" + getInsert_date_Ch() + ", getDate_end_Ch()=" + getDate_end_Ch()
+				+ ", getDate_com_Ch()=" + getDate_com_Ch() + ", getGrade_Ch()=" + getGrade_Ch() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
 }

@@ -60,7 +60,7 @@
 	</select>
 
 	<insert id="insertInfomation"
-		parameterType="com.garam.web.infomation.model.InfomationListParamVO"
+		parameterType="com.garam.web.infomation.model.InfomationListVO"
 		useGeneratedKeys="true" keyColumn="no" keyProperty="nO">
 
 		INSERT INTO
@@ -111,7 +111,8 @@
 
 	</update>
 
-	<update id="completeInfomation" parameterType="int">
+	<update id="completeInfomation"
+		parameterType="com.garam.common.model.para.ParameterVO">
 
 		UPDATE information
 
@@ -120,7 +121,22 @@
 		date_com = NOW()
 
 		WHERE no =
-		#{no};
+		#{num1Int};
+
+	</update>
+
+	<update id="undoCompleteInfomation"
+		parameterType="com.garam.common.model.para.ParameterVO">
+
+		UPDATE
+		information
+
+		SET
+
+		date_com = NULL
+
+		WHERE no =
+		#{num1Int};
 
 	</update>
 

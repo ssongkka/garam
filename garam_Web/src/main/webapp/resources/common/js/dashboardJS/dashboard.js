@@ -169,8 +169,8 @@ function getEmpList(page, listSize) {
 	};
 
 	var paramData = JSON.stringify({
-		"num1": page,
-		"num2": listSize
+		"num1Int": page,
+		"num2Int": listSize
 	});
 
 	var html = "";
@@ -289,8 +289,8 @@ function getVEList(page, listSize) {
 	};
 
 	var paramData = JSON.stringify({
-		"num1": page,
-		"num2": listSize
+		"num1Int": page,
+		"num2Int": listSize
 	});
 
 	var html = "";
@@ -343,8 +343,8 @@ function getInfoList(page, listSize) {
 	};
 
 	var paramData = JSON.stringify({
-		"num1": page,
-		"num2": listSize
+		"num1Int": page,
+		"num2Int": listSize
 	});
 
 	var html = "";

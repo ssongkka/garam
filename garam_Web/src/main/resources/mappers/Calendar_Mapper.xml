@@ -8,7 +8,7 @@
 <mapper namespace="com.garam.web.common.Calendar_Mapper">
 
 	<select id="get_Make_Cal_Data"
-		parameterType="com.garam.common.model.para.ParaStr2VO"
+		parameterType="com.garam.common.model.para.ParameterVO"
 		resultType="com.garam.common.model.Calendar_VO">
 
 		SELECT
@@ -22,13 +22,14 @@
 
 		WHERE
 
-		solar_Cal BETWEEN
-		#{num1} AND #{num2}
+		solar_Cal
+		BETWEEN
+		#{num1Str} AND #{num2Str}
 
 	</select>
 
 	<select id="get_Cal_Data"
-		parameterType="com.garam.common.model.para.ParaStr2VO"
+		parameterType="com.garam.common.model.para.ParameterVO"
 		resultType="com.garam.common.model.Calendar_VO">
 
 		SELECT
@@ -46,7 +47,7 @@
 
 		WHERE
 
-		solar_Cal BETWEEN #{num1} AND #{num2}
+		solar_Cal BETWEEN #{num1Str} AND #{num2Str}
 
 	</select>
 </mapper>

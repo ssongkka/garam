@@ -16,7 +16,6 @@
 	var retrun = '${url}';
 	console.log(message);
 	alert(message);
-	window.location.replace("${pageContext.request.contextPath}"
-			+ "/infomation");
+	window.location.replace("${pageContext.request.contextPath}" + retrun);
 </script>
 </html>

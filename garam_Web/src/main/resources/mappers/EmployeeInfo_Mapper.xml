@@ -8,7 +8,7 @@
 <mapper namespace="com.garam.web.common.EmployeeInfo_Mapper">
 
 	<select id="get_Emp_List"
-		parameterType="com.garam.common.model.para.ParaInt2VO"
+		parameterType="com.garam.common.model.para.ParameterVO"
 		resultType="com.garam.common.model.EmployeeList_VO">
 
 		SELECT
@@ -21,7 +21,7 @@
 
 		ORDER BY name
 
-		LIMIT #{num1}, #{num2}
+		LIMIT #{num1Int}, #{num2Int}
 
 	</select>
 

@@ -7,7 +7,7 @@
 <mapper namespace="com.garam.web.dashboard.dashboard_Mapper">
 
 	<select id="get_Info_List"
-		parameterType="com.garam.common.model.para.ParaInt2VO"
+		parameterType="com.garam.common.model.para.ParameterVO"
 		resultType="com.garam.web.dashboard.model.info_VO">
 
 		SELECT
@@ -23,7 +23,7 @@
 		ORDER BY
 		grade DESC, date_end ASC
 
-		LIMIT #{num1}, #{num2}
+		LIMIT #{num1Int}, #{num2Int}
 
 	</select>
 

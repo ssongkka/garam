@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.garam.common.model.VehicleList_VO;
-import com.garam.common.model.para.ParaInt2VO;
+import com.garam.common.model.para.ParameterVO;
 import com.garam.web.dashboard.service.DashboardService;
 
 @RestController
@@ -26,8 +26,8 @@ public class RestDashboardVEListController {
 	private DashboardService dashBoardService;
 
 	@RequestMapping(value = "/getVEList", method = { RequestMethod.POST })
-	public List<VehicleList_VO> getEmpList(@RequestBody ParaInt2VO paraint2VO, Model model) throws Exception {
-		return dashBoardService.getVeList(paraint2VO);
+	public List<VehicleList_VO> getEmpList(@RequestBody ParameterVO parameterVO, Model model) throws Exception {
+		return dashBoardService.getVeList(parameterVO);
 	}
 
 	@RequestMapping(value = "/getVEListCnt", method = { RequestMethod.POST })

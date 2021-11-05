@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.garam.web.dashboard.service.DashboardService;
-import com.garam.web.infomation.model.InfomationListParamVO;
 import com.garam.web.infomation.model.InfomationListVO;
 import com.garam.web.infomation.service.InfomationService;
 
@@ -35,17 +34,17 @@ public class InfomationController {
 
 	@RequestMapping(value = "/infomation/infomationSave", method = RequestMethod.POST)
 	public String infomationSave(Model model,
-			@ModelAttribute("InfomationListParamVO") InfomationListParamVO infomationListParamVO,
-			RedirectAttributes rttr) throws Exception {
+			@ModelAttribute("InfomationListParamVO") InfomationListVO infomationListVO) throws Exception {
 
-		String check = this.infomationService.insertInfomation(infomationListParamVO);
-		System.out.println("확인해봐라   " + check);
+		String check = this.infomationService.insertInfomation(infomationListVO);
 		if (check != null) {
 			model.addAttribute("msg", "등록 완료");
-			return "infomation/infomationSave";
+			model.addAttribute("url", "/infomation");
+			return "layout/alertInfo";
 		} else {
 			model.addAttribute("msg", "등록 실패!");
-			return "infomation/infomationSave";
+			model.addAttribute("url", "/infomation/infomationForm");
+			return "layout/alertInfo";
 		}
 	}
 
@@ -55,9 +54,20 @@ public class InfomationController {
 		return "infomation/infomationContent";
 	}
 
-	@RequestMapping(value = "/infomation/infomationContent/infomationComplete", method = RequestMethod.GET)
-	public String completeInfomation(RedirectAttributes rttr, @RequestParam("no") int no) throws Exception {
-		infomationService.completeInfomation(no);
-		return "redirect:/infomation";
+	@RequestMapping(value = "/infomation/infomationdDelete")
+	public String deleteInfomationContent(Model model, @RequestParam("no") int no) throws Exception {
+		int check = infomationService.deleteInfomation(no);
+
+		System.out.println("삭제  " + check);
+
+		if (check > 0) {
+			model.addAttribute("msg", "삭제 완료");
+			model.addAttribute("url", "/infomation");
+			return "layout/alertInfo";
+		} else {
+			model.addAttribute("msg", "삭제 실패!");
+			model.addAttribute("url", "/infomation/infomationForm");
+			return "layout/alertInfo";
+		}
 	}
 }

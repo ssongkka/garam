@@ -66,8 +66,8 @@ function setCalendarHol(stD, endD) {
 	};
 
 	var paramData = JSON.stringify({
-		"num1": stD,
-		"num2": endD
+		"num1Str": stD,
+		"num2Str": endD
 	});
 
 	$.ajax({
@@ -208,8 +208,8 @@ function setCaldays(day) {
 	var day7 = tmp_Day2.getFullYear() + "-" + (parseInt(tmp_Day2.getMonth()) + 1) + "-" + tmp_Day2.getDate();
 
 	var paramData = JSON.stringify({
-		"num1": day,
-		"num2": day7
+		"num1Str": day,
+		"num2Str": day7
 	});
 
 	var cal1 = "";

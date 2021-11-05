@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.garam.common.model.para.ParaInt2VO;
+import com.garam.common.model.para.ParameterVO;
 import com.garam.web.dashboard.model.info_VO;
 import com.garam.web.dashboard.service.DashboardService;
 
@@ -25,8 +25,8 @@ public class RestDashboardInfoListController {
 	private DashboardService dashBoardService;
 
 	@RequestMapping(value = "/getInfoList", method = { RequestMethod.POST })
-	public List<info_VO> getEmpList(@RequestBody ParaInt2VO paraint2VO) throws Exception {
-		return dashBoardService.getInfoList(paraint2VO);
+	public List<info_VO> getEmpList(@RequestBody ParameterVO parameterVO) throws Exception {
+		return dashBoardService.getInfoList(parameterVO);
 	}
 
 	@RequestMapping(value = "/getInfoListCnt", method = { RequestMethod.POST })

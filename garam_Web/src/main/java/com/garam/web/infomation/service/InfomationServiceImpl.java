@@ -6,8 +6,8 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.garam.common.model.para.ParameterVO;
 import com.garam.web.infomation.dao.InfomationDAO;
-import com.garam.web.infomation.model.InfomationListParamVO;
 import com.garam.web.infomation.model.InfomationListVO;
 
 @Service
@@ -22,22 +22,20 @@ public class InfomationServiceImpl implements InfomationService {
 	}
 
 	@Override
-	public String insertInfomation(InfomationListParamVO infomationListParamVO) throws Exception {
+	public String insertInfomation(InfomationListVO infomationListVO) throws Exception {
 
-		int check = this.infomationDAO.insertInfomation(infomationListParamVO);
+		int check = this.infomationDAO.insertInfomation(infomationListVO);
 		System.out.println("확인해라     " + check);
 		if (check > 0) {
-			System.out.println("1    " + infomationListParamVO.getNo());
-			System.out.println("1    " + infomationListParamVO.getInsert_date());
-			System.out.println("1    " + infomationListParamVO.getDate_end());
-			System.out.println("1    " + infomationListParamVO.getDate_com());
-			System.out.println("111    " + infomationListParamVO.getTitle());
-			System.out.println("222    " + infomationListParamVO.getContents());
-
-			return Integer.toString(infomationListParamVO.getNo());
+			return Integer.toString(infomationListVO.getNo());
 		} else {
 			return null;
 		}
+	}
+
+	@Override
+	public int deleteInfomation(int no) throws Exception {
+		return infomationDAO.deleteInfomation(no);
 	}
 
 	@Override
@@ -46,8 +44,17 @@ public class InfomationServiceImpl implements InfomationService {
 	}
 
 	@Override
-	public void completeInfomation(int no) throws Exception {
-		infomationDAO.completeInfomation(no);
+	public int completeInfomation(ParameterVO parameterVO) throws Exception {
+		int check = infomationDAO.completeInfomation(parameterVO);
+
+		return check;
+	}
+
+	@Override
+	public int undoCompleteInfomation(ParameterVO parameterVO) throws Exception {
+		int check = infomationDAO.undoCompleteInfomation(parameterVO);
+
+		return check;
 	}
 
 }

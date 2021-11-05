@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.garam.common.model.EmployeeInfo_VO;
 import com.garam.common.model.EmployeeList_VO;
 import com.garam.common.model.Pagination;
-import com.garam.common.model.para.ParaInt2VO;
+import com.garam.common.model.para.ParameterVO;
 import com.garam.web.dashboard.service.DashboardService;
 
 @RestController
@@ -29,8 +29,8 @@ public class RestDashboardEmpListController {
 	private DashboardService dashBoardService;
 
 	@RequestMapping(value = "/getEmpList", method = { RequestMethod.POST })
-	public List<EmployeeList_VO> getEmpList(@RequestBody ParaInt2VO paraint2VO) throws Exception {
-		return dashBoardService.getEmpList(paraint2VO);
+	public List<EmployeeList_VO> getEmpList(@RequestBody ParameterVO parameterVO) throws Exception {
+		return dashBoardService.getEmpList(parameterVO);
 	}
 
 	@RequestMapping(value = "/getEmpListCnt", method = { RequestMethod.POST })

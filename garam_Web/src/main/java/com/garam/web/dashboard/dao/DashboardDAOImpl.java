@@ -11,12 +11,10 @@ import com.garam.common.model.CalendarMake_VO;
 import com.garam.common.model.Calendar_VO;
 import com.garam.common.model.EmployeeInfo_VO;
 import com.garam.common.model.EmployeeList_VO;
-import com.garam.common.model.Pagination;
 import com.garam.common.model.Ve_Id2_VO;
 import com.garam.common.model.VehicleInfo_VO;
 import com.garam.common.model.VehicleList_VO;
-import com.garam.common.model.para.ParaInt2VO;
-import com.garam.common.model.para.ParaStr2VO;
+import com.garam.common.model.para.ParameterVO;
 import com.garam.web.dashboard.model.info_VO;
 
 @Repository
@@ -26,13 +24,13 @@ public class DashboardDAOImpl implements DashboardDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<EmployeeList_VO> getEmpList(ParaInt2VO paraint2VO) throws Exception {
-		return sqlSession.selectList("com.garam.web.common.EmployeeInfo_Mapper.get_Emp_List", paraint2VO);
+	public List<EmployeeList_VO> getEmpList(ParameterVO parameterVO) throws Exception {
+		return sqlSession.selectList("com.garam.web.common.EmployeeInfo_Mapper.get_Emp_List", parameterVO);
 	}
 
 	@Override
-	public List<VehicleList_VO> getVeList(ParaInt2VO paraint2VO) throws Exception {
-		return sqlSession.selectList("com.garam.web.common.VehicleInfo_Mapper.get_VE_List", paraint2VO);
+	public List<VehicleList_VO> getVeList(ParameterVO parameterVO) throws Exception {
+		return sqlSession.selectList("com.garam.web.common.VehicleInfo_Mapper.get_VE_List", parameterVO);
 	}
 
 	@Override
@@ -51,13 +49,13 @@ public class DashboardDAOImpl implements DashboardDAO {
 	}
 
 	@Override
-	public List<CalendarMake_VO> getCalMake(ParaStr2VO para2vo) throws Exception {
-		return sqlSession.selectList("com.garam.web.common.Calendar_Mapper.get_Make_Cal_Data", para2vo);
+	public List<CalendarMake_VO> getCalMake(ParameterVO parameterVO) throws Exception {
+		return sqlSession.selectList("com.garam.web.common.Calendar_Mapper.get_Make_Cal_Data", parameterVO);
 	}
 
 	@Override
-	public List<Calendar_VO> getCalList(ParaStr2VO para2vo) throws Exception {
-		return sqlSession.selectList("com.garam.web.common.Calendar_Mapper.get_Cal_Data", para2vo);
+	public List<Calendar_VO> getCalList(ParameterVO parameterVO) throws Exception {
+		return sqlSession.selectList("com.garam.web.common.Calendar_Mapper.get_Cal_Data", parameterVO);
 	}
 
 	@Override
@@ -71,8 +69,8 @@ public class DashboardDAOImpl implements DashboardDAO {
 	}
 
 	@Override
-	public List<info_VO> getInfoList(ParaInt2VO paraint2VO) throws Exception {
-		return sqlSession.selectList("com.garam.web.dashboard.dashboard_Mapper.get_Info_List", paraint2VO);
+	public List<info_VO> getInfoList(ParameterVO parameterVO) throws Exception {
+		return sqlSession.selectList("com.garam.web.dashboard.dashboard_Mapper.get_Info_List", parameterVO);
 	}
 
 	@Override

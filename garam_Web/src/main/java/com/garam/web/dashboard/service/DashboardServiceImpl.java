@@ -10,12 +10,10 @@ import com.garam.common.model.CalendarMake_VO;
 import com.garam.common.model.Calendar_VO;
 import com.garam.common.model.EmployeeInfo_VO;
 import com.garam.common.model.EmployeeList_VO;
-import com.garam.common.model.Pagination;
 import com.garam.common.model.Ve_Id2_VO;
 import com.garam.common.model.VehicleInfo_VO;
 import com.garam.common.model.VehicleList_VO;
-import com.garam.common.model.para.ParaInt2VO;
-import com.garam.common.model.para.ParaStr2VO;
+import com.garam.common.model.para.ParameterVO;
 import com.garam.web.dashboard.dao.DashboardDAO;
 import com.garam.web.dashboard.model.info_VO;
 
@@ -26,13 +24,13 @@ public class DashboardServiceImpl implements DashboardService {
 	private DashboardDAO dash_Dao;
 
 	@Override
-	public List<EmployeeList_VO> getEmpList(ParaInt2VO paraint2VO) throws Exception {
-		return dash_Dao.getEmpList(paraint2VO);
+	public List<EmployeeList_VO> getEmpList(ParameterVO parameterVO) throws Exception {
+		return dash_Dao.getEmpList(parameterVO);
 	}
 
 	@Override
-	public List<VehicleList_VO> getVeList(ParaInt2VO paraint2VO) throws Exception {
-		return dash_Dao.getVeList(paraint2VO);
+	public List<VehicleList_VO> getVeList(ParameterVO parameterVO) throws Exception {
+		return dash_Dao.getVeList(parameterVO);
 	}
 
 	@Override
@@ -51,13 +49,13 @@ public class DashboardServiceImpl implements DashboardService {
 	}
 
 	@Override
-	public List<CalendarMake_VO> getCalMake(ParaStr2VO para2vo) throws Exception {
-		return dash_Dao.getCalMake(para2vo);
+	public List<CalendarMake_VO> getCalMake(ParameterVO parameterVO) throws Exception {
+		return dash_Dao.getCalMake(parameterVO);
 	}
 
 	@Override
-	public List<Calendar_VO> getCalList(ParaStr2VO para2vo) throws Exception {
-		return dash_Dao.getCalList(para2vo);
+	public List<Calendar_VO> getCalList(ParameterVO parameterVO) throws Exception {
+		return dash_Dao.getCalList(parameterVO);
 	}
 
 	@Override
@@ -71,8 +69,8 @@ public class DashboardServiceImpl implements DashboardService {
 	}
 
 	@Override
-	public List<info_VO> getInfoList(ParaInt2VO paraint2VO) throws Exception {
-		return dash_Dao.getInfoList(paraint2VO);
+	public List<info_VO> getInfoList(ParameterVO parameterVO) throws Exception {
+		return dash_Dao.getInfoList(parameterVO);
 	}
 
 	@Override

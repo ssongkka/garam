@@ -8,7 +8,7 @@
 <mapper namespace="com.garam.web.common.VehicleInfo_Mapper">
 
 	<select id="get_VE_List"
-		parameterType="com.garam.common.model.para.ParaInt2VO"
+		parameterType="com.garam.common.model.para.ParameterVO"
 		resultType="com.garam.common.model.VehicleList_VO">
 
 		SELECT
@@ -22,7 +22,7 @@
 
 		ORDER BY vehicle
 
-		LIMIT #{num1}, #{num2}
+		LIMIT #{num1Int}, #{num2Int}
 	</select>
 
 	<select id="get_VE_List_Cnt" resultType="int">
