@@ -13,6 +13,7 @@ public class InfomationListVO {
 	private String title;
 	private String contents;
 	private int trash;
+	private int cnt;
 
 	private String insert_date_Ch;
 	private String edit_date_Ch;
@@ -98,6 +99,14 @@ public class InfomationListVO {
 
 	public void setTrash(int trash) {
 		this.trash = trash;
+	}
+
+	public int getCnt() {
+		return cnt;
+	}
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
 	}
 
 	public String getInsert_date_Ch() {

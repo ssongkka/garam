@@ -74,4 +74,9 @@ public class InfomationDAOImpl implements InfomationDAO {
 	public int deleteInfomationReply(ParameterVO parameterVO) throws Exception {
 		return sqlSession.update("com.garam.web.infomation.InfomationReply_Mapper.deleteInfomationReply", parameterVO);
 	}
+
+	@Override
+	public int getReplyCnt(ParameterVO parameterVO) throws Exception {
+		return sqlSession.selectOne("com.garam.web.infomation.InfomationReply_Mapper.getInfoReplyListCnt", parameterVO);
+	}
 }

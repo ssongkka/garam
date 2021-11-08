@@ -11,8 +11,10 @@
 		resultType="com.garam.web.infomation.model.InfomationReplyVO"
 		parameterType="com.garam.common.model.para.ParameterVO">
 
-		SELECT rno, no, parent_no, depth, seq, insert_date,
-		edit_date, content, name, trash
+		SELECT rno, no, parent_no, depth,
+		insert_date,
+		edit_date,
+		content, name, trash
 
 		FROM
 
@@ -20,15 +22,18 @@
 
 		WHERE
 
-		no =
-		#{num1Int}
+		NO = #{num1Int}
 
 		AND
 
-		trash = 1
+		trash =
+		1
 
-		ORDER BY IF(ISNULL(parent_no), rno, parent_no),
-		seq;
+		ORDER BY
+		IF(parent_no = 0, rno,
+		parent_no),
+		insert_date;
+
 	</select>
 
 	<select id="getInfoReplyListCnt" resultType="int"
@@ -62,7 +67,6 @@
 		no,
 		parent_no,
 		depth,
-		seq,
 		insert_date,
 		edit_date,
 		content,
@@ -76,7 +80,6 @@
 		#{no},
 		#{parent_no},
 		#{depth},
-		#{seq},
 		NOW(),
 		NULL,
 		#{content},

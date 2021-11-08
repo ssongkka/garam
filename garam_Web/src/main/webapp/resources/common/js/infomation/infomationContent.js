@@ -13,6 +13,16 @@ $(document).on(
 	}
 );
 
+$("#content").on('keydown keyup', function() {
+	var value = $(this).val();
+	var max = 500; // 최대 댓글 글자 수
+	var length = value.length; // 현재 댓글 길이
+	if (length > max) {
+		alert(max + '자 이상 쓸 수 없습니다.');
+		$(this).val(value.substr(0, max - 1));
+	}
+});
+
 function fn_CompleteContent(no) {
 	var url = "/infomationComplete/complete";
 	var headers = {
@@ -101,34 +111,19 @@ function fn_ShowReplyList(no) {
 		dataType: 'json',
 
 		success: function(r) {
-
-			//			<h4>댓글</h4>
-			//					<div class="infoContent-reply-body" id="replyList">
-			//						<div class="infoContent-reply-body-item">부장 홍길동</div>
-			//						<div class="infoContent-reply-body-item">오호 신기한데요???</div>
-			//						<div class="infoContent-reply-body-item">
-			//							<div>작성일 2021.11.05 19:05:00</div>
-			//							<div>|</div>
-			//							<div>수정일 2021.11.05 19:05:00</div>
-			//							<div>|</div>
-			//							<div>
-			//								<a>답글쓰기</a>
-			//							</div>
-			//						</div>
-			//					</div>
-			//					<hr>
-
 			var htmls = '';
-			htmls = '<h4>댓글</h4>';
+			htmls = '<h5>댓글 목록</h5>';
 			if (r.length < 1) {
-				htmls = '<h4>댓글없음</h4>';
+				htmls = '<h5>댓글 없음</h5>';
 			} else {
+				htmls += '<ul>';
 				for (var i = 0; i < r.length; i++) {
-					htmls += '<div class="infoContent-reply-body">';
+					htmls += '<hr>';
 					if (r[i].depth > 0) {
-						htmls += '<div class="infoContent-reply-body-item"><i class="fas fa-reply fa-rotate-180"></i></div>';
+						htmls += '<li class="rereply">';
+					} else {
+						htmls += '<li>';
 					}
-					htmls += '<div class="infoContent-reply-body-in">';
 					htmls += '<div class="infoContent-reply-body-in-item">' + r[i].name + '</div>';
 					htmls += '<div class="infoContent-reply-body-in-item">' + r[i].content + '</div>';
 					htmls += '<div class="infoContent-reply-body-in-item">';
@@ -136,16 +131,99 @@ function fn_ShowReplyList(no) {
 					htmls += '<div>|</div>';
 					htmls += '<div>수정일&nbsp;' + r[i].edit_date_Ch + '</div>';
 					htmls += '<div>|</div>';
-					htmls += '<div>';
-					htmls += '<a>답글쓰기</a>';
+					if (r[i].depth < 1) {
+						htmls += '<div style="background: #eff0f2; border-radius: 2px; padding: 0rem .3rem 0rem .3rem;">';
+						htmls += '<a onclick="fn_ShowHiddenReply(' + r[i].rno + ')">답글쓰기</a>';
+						htmls += '</div>';
+					}
 					htmls += '</div>';
-					htmls += '</div>';
-					htmls += '</div>';
-					htmls += '</div>';
-					htmls += '<hr>';
+					htmls += '</li>';
+
+					if (r[i].depth < 1) {
+						htmls += '<li id= "rereply-write' + r[i].rno + '" style= "display: none">';
+						htmls += '<div class= "reply-write-body">';
+						htmls += '<div class= "reply-write-item1">부장&nbsp;홍길동</div>';
+						htmls += '<div class= "reply-write-item2">';
+						htmls += '<textarea id= "rereply-write-txa' + r[i].rno + '" class="reply-write-item-txarea" placeholder="댓글을 입력해 주세요"></textarea>';
+						htmls += '</div>';
+						htmls += '<div class="reply-write-item3">';
+						htmls += '<a class="BaseButton size_mini BaseButton--skinGray" onclick="fn_ShowHiddenReply(' + r[i].rno + ')">취소</a>';
+						htmls += '<a class="BaseButton size_mini BaseButton--skinGray" onclick="insert_Reply(' + r[i].rno + ')">등록</a>';
+						htmls += '</div>';
+						htmls += '</div>';
+						htmls += '</li>';
+					}
 				}
+				htmls += '</ul>';
 			}
 			$("#replyList").html(htmls);
+		}
+	});
+}
+
+function fn_ShowHiddenReply(num) {
+
+	var showhide = 'rereply-write';
+	var txa = 'rereply-write-txa';
+
+
+	var aaa = '#' + showhide + num;
+	var bbb = '#' + txa + num;
+
+	$(bbb).val('');
+
+	if ($(aaa).is(':hidden')) {
+		$(aaa).show();
+	} else {
+		$(aaa).hide();
+	}
+}
+
+function insert_Reply(num) {
+
+	var tmp_Cont = '';
+	var no = $('#infoContent-head').val();
+	console.log('infoContent   ' + no);
+
+	var prtNo = 0;
+
+	var dep = 0;
+
+	if (num < 1) {
+		tmp_Cont = '#' + 'rereply-write-txa';
+		prtNo = null;
+	} else {
+		tmp_Cont = '#' + 'rereply-write-txa' + num;
+		prtNo = num;
+		dep = 1;
+	}
+	var cont = $(tmp_Cont).val();
+	console.log("contcont  " + cont);
+
+	var url = "/infomationReply/infomationSave";
+	var headers = {
+		"Content-Type": "application/json",
+		"X-HTTP-Method-Override": "POST"
+	};
+
+	var paramData = JSON.stringify({
+		"no": no,
+		"parent_no": prtNo,
+		"depth": dep,
+		"content": cont,
+		"name": '사원 홍길동',
+	});
+
+	$.ajax({
+		url: url,
+		headers: headers,
+		type: 'POST',
+		data: paramData,
+		dataType: 'json',
+
+		success: function(r) {
+			$(tmp_Cont).val('');
+			fn_ShowReplyList($('#infoContent-head').val());
 		}
 	});
 }

@@ -28,4 +28,6 @@ public interface InfomationDAO {
 	public int updateInfomationReply(InfomationReplyVO infomationReplyVO) throws Exception;
 
 	public int deleteInfomationReply(ParameterVO parameterVO) throws Exception;
+
+	public int getReplyCnt(ParameterVO parameterVO) throws Exception;
 }

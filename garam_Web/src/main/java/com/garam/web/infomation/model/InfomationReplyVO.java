@@ -7,7 +7,6 @@ public class InfomationReplyVO {
 	private int no;
 	private int parent_no;
 	private int depth;
-	private int seq;
 	private String insert_date;
 	private String edit_date;
 	private String content;
@@ -47,14 +46,6 @@ public class InfomationReplyVO {
 
 	public void setDepth(int depth) {
 		this.depth = depth;
-	}
-
-	public int getSeq() {
-		return seq;
-	}
-
-	public void setSeq(int seq) {
-		this.seq = seq;
 	}
 
 	public String getInsert_date() {
@@ -111,13 +102,15 @@ public class InfomationReplyVO {
 
 	@Override
 	public String toString() {
-		return "infomationReplyVO [rno=" + rno + ", no=" + no + ", insert_date=" + insert_date + ", edit_date="
-				+ edit_date + ", content=" + content + ", name=" + name + ", trash=" + trash + ", insert_date_Ch="
-				+ insert_date_Ch + ", edit_date_Ch=" + edit_date_Ch + ", getRno()=" + getRno() + ", getNo()=" + getNo()
-				+ ", getInsert_date()=" + getInsert_date() + ", getEdit_date()=" + getEdit_date() + ", getContent()="
-				+ getContent() + ", getName()=" + getName() + ", getTrash()=" + getTrash() + ", getInsert_date_Ch()="
-				+ getInsert_date_Ch() + ", getEdit_date_Ch()=" + getEdit_date_Ch() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+		return "InfomationReplyVO [rno=" + rno + ", no=" + no + ", parent_no=" + parent_no + ", depth=" + depth
+				+ ", insert_date=" + insert_date + ", edit_date=" + edit_date + ", content=" + content + ", name="
+				+ name + ", trash=" + trash + ", insert_date_Ch=" + insert_date_Ch + ", edit_date_Ch=" + edit_date_Ch
+				+ ", getRno()=" + getRno() + ", getNo()=" + getNo() + ", getParent_no()=" + getParent_no()
+				+ ", getDepth()=" + getDepth() + ", getInsert_date()=" + getInsert_date() + ", getEdit_date()="
+				+ getEdit_date() + ", getContent()=" + getContent() + ", getName()=" + getName() + ", getTrash()="
+				+ getTrash() + ", getInsert_date_Ch()=" + getInsert_date_Ch() + ", getEdit_date_Ch()="
+				+ getEdit_date_Ch() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
 
 }

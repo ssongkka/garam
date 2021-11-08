@@ -9,21 +9,42 @@
 	<select id="getInfomationList"
 		resultType="com.garam.web.infomation.model.InfomationListVO">
 
-		SELECT
-
-		no, insert_date, edit_date,
+		SELECT no, insert_date, edit_date,
 		date_end, date_com, grade,
 		name,
-		title, contents, trash
+		title,
+		contents, trash,
 
-		FROM information
+		(SELECT COUNT(*)
+
+		FROM
+
+		infomation_reply
+
+		WHERE
+
+		infomation_reply.`no`= information.`no`
+
+		AND
+
+		trash = 1)
+
+		AS
+
+		cnt
+
+		FROM
+
+		information
+
+		WHERE
+
+		information.trash = 1
 
 		ORDER BY
 		grade DESC,
 		date_end
 		ASC;
-
-
 	</select>
 
 	<select id="getInfoListCnt" resultType="int">

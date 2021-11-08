@@ -1,6 +1,5 @@
 <%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/WEB-INF/views/layout/header.jsp"%>
 
@@ -9,8 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/common/css/infomationCss/infomation.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/common/css/infomationCss/infomation.css">
 </head>
 <body>
 	<div class="container">
@@ -19,9 +17,7 @@
 				<h2>공지사항</h2>
 			</div>
 			<div>
-				<a
-					href="${pageContext.request.contextPath}/infomation/infomationForm">
-					<i class="fas fa-pen"></i>&nbsp;글작성
+				<a href="${pageContext.request.contextPath}/infomation/infomationForm"> <i class="fas fa-pen"></i>&nbsp;글작성
 				</a>
 			</div>
 		</div>
@@ -30,9 +26,7 @@
 			<div>
 				<div class="col-lg-6">
 					<div class="input-group">
-						<input type="text" class="form-control"
-							placeholder="Search for..."> <span
-							class="input-group-btn">
+						<input type="text" class="form-control" placeholder="Search for..."> <span class="input-group-btn">
 							<button class="btn btn-default" type="button">Go!</button>
 						</span>
 					</div>
@@ -41,14 +35,10 @@
 				<!-- /.col-lg-6 -->
 			</div>
 			<div>
-				<label> <input type="radio" name="ra-info" id="ra1-info"
-					value="전체" checked="checked">&nbsp;전체&nbsp;
-				</label> <label> <input type="radio" name="ra-info" id="ra2-info"
-					value="미완료">&nbsp;미완료&nbsp;
-				</label> <label> <input type="radio" name="ra-info" id="ra3-info"
-					value="완료">&nbsp;완료&nbsp;
-				</label> <label> <input type="radio" name="ra-info" id="ra4-info"
-					value="기한초과">&nbsp;기한초과
+				<label> <input type="radio" name="ra-info" id="ra1-info" value="전체" checked="checked">&nbsp;전체&nbsp;
+				</label> <label> <input type="radio" name="ra-info" id="ra2-info" value="미완료">&nbsp;미완료&nbsp;
+				</label> <label> <input type="radio" name="ra-info" id="ra3-info" value="완료">&nbsp;완료&nbsp;
+				</label> <label> <input type="radio" name="ra-info" id="ra4-info" value="기한초과">&nbsp;기한초과
 				</label>
 			</div>
 
@@ -86,16 +76,13 @@
 							<tr>
 								<c:choose>
 									<c:when test="${list.date_com_Ch != '미완료'}">
-										<td><img src="/resources/common/img/comp.png"
-											style="width: 30px; height: 30px; border-radius: 50%;" alt="">
+										<td><img src="/resources/common/img/comp.png" style="width: 30px; height: 30px; border-radius: 50%;" alt="">
 										</td>
 									</c:when>
 									<c:otherwise>
 										<c:choose>
 											<c:when test="${list.grade > 0}">
-												<td><img src="/resources/common/img/neu.png"
-													style="width: 30px; height: 30px; border-radius: 50%;"
-													alt=""></td>
+												<td><img src="/resources/common/img/neu.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""></td>
 											</c:when>
 											<c:otherwise>
 												<td></td>
@@ -103,11 +90,15 @@
 										</c:choose>
 									</c:otherwise>
 								</c:choose>
-								<td style="text-align: left;"><a href="#"
-									onClick="fn_contentView(<c:out
-											value="${list.no}" />)">
-										<c:out value="${list.title}" />
-								</a></td>
+								<td style="text-align: left;"><a href="#" onClick="fn_contentView(<c:out
+											value="${list.no}" />)"> <c:out
+											value="${list.title}" />
+								</a> <c:choose>
+										<c:when test="${list.cnt > 0}">
+											<span style="color: blue; font-size: 13px; font-weight: 550">&nbsp;[<c:out value="${list.cnt}" />]
+											</span>
+										</c:when>
+									</c:choose></td>
 								<td><c:out value="${list.date_end_Ch}" /></td>
 								<td><c:out value="${list.name}" /></td>
 								<td><c:out value="${list.insert_date_Ch}" /></td>
@@ -120,7 +111,6 @@
 	</div>
 </body>
 
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/common/js/infomation/infomation.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/common/js/infomation/infomation.js"></script>
 
 </html>

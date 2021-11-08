@@ -1,5 +1,12 @@
 @charset "UTF-8";
 
+:root{
+    --main-color : blue;
+    --color-datk : #1D2231;
+    --text-grey : #8390A2;
+    --side-size : 250px;
+}
+
 html {
 	overflow-y: scroll;
 }
@@ -58,6 +65,14 @@ input[type="checkbox"] {
 	padding: 0 12px;
 	font-size: 13px;
 	line-height: 36px;
+}
+
+.BaseButton.size_mini {
+	min-width: 43px;
+	height: 26px;
+	margin-right: 10px;
+	font-size: 13px;
+	line-height: 26px;
 }
 
 .BaseButton--skinGray {

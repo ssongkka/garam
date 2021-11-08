@@ -43,7 +43,9 @@
 					<c:choose>
 						<c:when test="${grade > 0}">
 							<div class="infoContent-gradeC" id="infoContent-grade">
-								<img src="/resources/common/img/neu.png" style="width: 14px; height: 14px; border-radius: 50%;" alt="">
+								<img src="/resources/common/img/neu.png" style="width: 14px;
+	height: 14px;
+	border-radius: 50%;" alt="">
 							</div>
 							<div>중요</div>
 						</c:when>
@@ -98,19 +100,38 @@
 			</div>
 			<hr>
 			<div class="infoContent-replyC">
-				<div class="" id="replyList"></div>
-				<div class="infoContent-reply-body2" style="margin-top: 1rem;">
-					<form:form name="form" id="form" role="form" modelAttribute="infomationReplyVO" method="post">
-						<form:hidden path="rno" id="rno" />
-						<div class="">
-							<div class="">
-								<form:textarea class="form-control" path="content" id="content" placeholder="댓글을 입력해 주세요"></form:textarea>
+				<div class="" id="replyList">
+					<h4>댓글</h4>
+					<ul>
+						<li>
+							<div class="infoContent-reply-body-in-item">name 01</div>
+							<div class="infoContent-reply-body-in-item">content 01</div>
+							<div class="infoContent-reply-body-in-item">
+								<div>작성일&nbsp;2021.11.05. 21:32&nbsp;</div>
+								<div>|</div>
+								<div>수정일&nbsp;</div>
+								<div>|</div>
+								<div style="background: #eff0f2;
+	border-radius: 2px;
+	padding: 0rem .3rem 0rem .3rem;">
+									<a onclick="fn_ShowHiddenReply('replyShow1', 1)">답글쓰기</a>
+								</div>
 							</div>
-							<div class="">
-								<button type="button" class="" id="btnReplySave">저 장</button>
-							</div>
-						</div>
-					</form:form>
+						</li>
+					</ul>
+				</div>
+				<hr>
+				<div style="margin-top: 2rem;">
+					<h5>댓글 작성</h5>
+				</div>
+				<div class="reply-write">
+					<div class="reply-write-item1">부장&nbsp;홍길동</div>
+					<div class="reply-write-item2">
+						<textarea rows="3" cols="" class="reply-write-item-txarea" id="rereply-write-txa" placeholder="댓글을 입력해 주세요"></textarea>
+					</div>
+					<div class="reply-write-item3">
+						<a class="BaseButton size_mini BaseButton--skinGray" onclick="insert_Reply(0)">등록</a>
+					</div>
 				</div>
 			</div>
 

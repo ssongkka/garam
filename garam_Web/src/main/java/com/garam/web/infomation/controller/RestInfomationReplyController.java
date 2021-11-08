@@ -28,4 +28,9 @@ public class RestInfomationReplyController {
 	public List<InfomationReplyVO> getInfomationReplyList(@RequestBody ParameterVO parameterVO) throws Exception {
 		return infomationService.getInfomationReplyList(parameterVO);
 	}
+
+	@RequestMapping(value = "/infomationSave", method = { RequestMethod.POST })
+	public int InfomationReplySave(@RequestBody InfomationReplyVO infomationReplyVO) throws Exception {
+		return infomationService.insertInfomationReply(infomationReplyVO);
+	}
 }

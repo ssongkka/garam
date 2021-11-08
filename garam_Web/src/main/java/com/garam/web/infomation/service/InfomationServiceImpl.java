@@ -90,4 +90,9 @@ public class InfomationServiceImpl implements InfomationService {
 		int check = this.infomationDAO.deleteInfomationReply(parameterVO);
 		return check;
 	}
+
+	@Override
+	public int getReplyCnt(ParameterVO parameterVO) throws Exception {
+		return infomationDAO.getReplyCnt(parameterVO);
+	}
 }
