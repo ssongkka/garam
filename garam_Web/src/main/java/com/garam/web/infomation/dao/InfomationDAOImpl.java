@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.garam.common.model.para.ParameterVO;
+import com.garam.common.util.Pagination;
+import com.garam.common.util.Search;
 import com.garam.web.infomation.model.InfomationListVO;
 import com.garam.web.infomation.model.InfomationReplyVO;
 
@@ -18,8 +20,13 @@ public class InfomationDAOImpl implements InfomationDAO {
 	private SqlSession sqlSession;
 
 	@Override
-	public List<InfomationListVO> getInfomationList() throws Exception {
-		return sqlSession.selectList("com.garam.web.infomation.Infomation_Mapper.getInfomationList");
+	public List<InfomationListVO> getInfomationList(Search search) throws Exception {
+		return sqlSession.selectList("com.garam.web.infomation.Infomation_Mapper.getInfomationList", search);
+	}
+
+	@Override
+	public int getInfomationCnt(Search search) throws Exception {
+		return sqlSession.selectOne("com.garam.web.infomation.Infomation_Mapper.getInfoListCnt", search);
 	}
 
 	@Override

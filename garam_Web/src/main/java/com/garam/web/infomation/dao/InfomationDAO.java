@@ -3,11 +3,15 @@ package com.garam.web.infomation.dao;
 import java.util.List;
 
 import com.garam.common.model.para.ParameterVO;
+import com.garam.common.util.Pagination;
+import com.garam.common.util.Search;
 import com.garam.web.infomation.model.InfomationListVO;
 import com.garam.web.infomation.model.InfomationReplyVO;
 
 public interface InfomationDAO {
-	public List<InfomationListVO> getInfomationList() throws Exception;
+	public List<InfomationListVO> getInfomationList(Search search) throws Exception;
+
+	public int getInfomationCnt(Search search) throws Exception;
 
 	public InfomationListVO getInfomationContent(int no) throws Exception;
 

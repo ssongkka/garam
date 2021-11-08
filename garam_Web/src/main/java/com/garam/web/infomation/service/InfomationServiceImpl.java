@@ -7,6 +7,8 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.garam.common.model.para.ParameterVO;
+import com.garam.common.util.Pagination;
+import com.garam.common.util.Search;
 import com.garam.web.infomation.dao.InfomationDAO;
 import com.garam.web.infomation.model.InfomationListVO;
 import com.garam.web.infomation.model.InfomationReplyVO;
@@ -18,8 +20,13 @@ public class InfomationServiceImpl implements InfomationService {
 	private InfomationDAO infomationDAO;
 
 	@Override
-	public List<InfomationListVO> getInfomationList() throws Exception {
-		return infomationDAO.getInfomationList();
+	public List<InfomationListVO> getInfomationList(Search search) throws Exception {
+		return infomationDAO.getInfomationList(search);
+	}
+
+	@Override
+	public int getInfomationCnt(Search search) throws Exception {
+		return infomationDAO.getInfomationCnt(search);
 	}
 
 	@Override

@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.garam.web.dashboard.service.DashboardService;
+import com.garam.common.util.Search;
 import com.garam.web.infomation.model.InfomationListVO;
 import com.garam.web.infomation.model.InfomationReplyVO;
 import com.garam.web.infomation.service.InfomationService;
@@ -23,8 +22,28 @@ public class InfomationController {
 	private InfomationService infomationService;
 
 	@RequestMapping(value = "/infomation", method = RequestMethod.GET)
-	public String getInfomationList(Model model) throws Exception {
-		model.addAttribute("infoList", infomationService.getInfomationList());
+	public String getInfomationList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false) String searchKind,
+			@RequestParam(required = false, defaultValue = "title") String searchType,
+			@RequestParam(required = false) String keyword, @ModelAttribute("search") Search search) throws Exception {
+
+		System.out.println("찾아라   " + searchKind);
+		System.out.println("찾아라   " + searchType);
+		System.out.println("찾아라   " + keyword);
+
+		search.setSearchKind(searchKind);
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+
+		int listCnt = infomationService.getInfomationCnt(search);
+
+		search.pageInfo(page, range, listCnt);
+
+		model.addAttribute("pgn", search);
+
+		model.addAttribute("infoList", infomationService.getInfomationList(search));
+
 		return "infomation/infomation";
 	}
 

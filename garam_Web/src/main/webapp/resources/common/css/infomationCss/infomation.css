@@ -74,6 +74,18 @@ th {
 	align-items: center;
 }
 
+.form-inline{
+	margin: 0;
+}
+
+.form-control{
+	border-radius: 0;
+}
+
+input[type="text"] :focus { 
+	outline: none;
+}
+
 .head-info-insert {
 	text-align: right;
 }

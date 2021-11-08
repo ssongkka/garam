@@ -554,13 +554,6 @@ function showModalInfo(num) {
 	var endD = $('#' + 'dash-collapse-' + num + '-end').text();
 	var cont = $('#' + 'dash-collapse-' + num + '-body').text();
 
-
-	console.log("ttrrtter   " + title);
-	console.log("ttrrtter   " + stD);
-	console.log("ttrrtter   " + grade);
-	console.log("ttrrtter   " + endD);
-	console.log("ttrrtter   " + cont);
-
 	$('#title-info').val(title);
 	$('#date-info').val(stD);
 	$('#cont-info').html('<div>' + cont + '</div>');
@@ -571,7 +564,7 @@ $(document).on(
 	'#new-info',
 	function() {
 		var w = 800;
-		var h = 700;
+		var h = 900;
 
 		var xPos = (document.body.offsetWidth) - w;
 		xPos += window.screenLeft;

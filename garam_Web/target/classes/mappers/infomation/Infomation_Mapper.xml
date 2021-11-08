@@ -10,7 +10,8 @@
 		resultType="com.garam.web.infomation.model.InfomationListVO">
 
 		SELECT no, insert_date, edit_date,
-		date_end, date_com, grade,
+		date_end, date_com,
+		grade,
 		name,
 		title,
 		contents, trash,
@@ -37,14 +38,30 @@
 
 		information
 
-		WHERE
-
-		information.trash = 1
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchKind=='all'"></if>
+			<if test="searchKind=='uncomplete'">AND information.date_com IS NULL</if>
+			<if test="searchKind=='complete'">AND information.date_com IS NOT NULL</if>
+			<if test="searchKind=='limit'"><![CDATA[AND information.date_com IS NULL AND information.date_end < NOW()]]></if>
+			<if test="keyword != null and keyword != ''">
+				<if test="searchType=='title'">AND information.title LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='contents'">AND information.contents LIKE CONCAT('%', #{keyword},
+					'%')
+				</if>
+				<if test="searchType=='name'">AND information.name LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+			</if>
+			AND information.trash=1
+		</trim>
 
 		ORDER BY
 		grade DESC,
 		date_end
-		ASC;
+		ASC
+
+		LIMIT #{startList}, #{listSize}
+
 	</select>
 
 	<select id="getInfoListCnt" resultType="int">
@@ -58,8 +75,21 @@
 
 		information
 
-		WHERE trash = 1;
-
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="searchKind=='all'"></if>
+			<if test="searchKind=='uncomplete'">AND information.date_com IS NULL</if>
+			<if test="searchKind=='complete'">AND information.date_com IS NOT NULL</if>
+			<if test="searchKind=='limit'"><![CDATA[AND information.date_end < NOW()]]></if>
+			<if test="keyword != null and keyword != ''">
+				<if test="searchType=='title'">AND title LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='contents'">AND contents LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+				<if test="searchType=='name'">AND name LIKE CONCAT('%', #{keyword}, '%')
+				</if>
+			</if>
+			AND information.trash=1
+		</trim>
 	</select>
 
 	<select id="getInfomationContent"

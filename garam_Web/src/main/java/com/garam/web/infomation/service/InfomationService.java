@@ -3,12 +3,16 @@ package com.garam.web.infomation.service;
 import java.util.List;
 
 import com.garam.common.model.para.ParameterVO;
+import com.garam.common.util.Pagination;
+import com.garam.common.util.Search;
 import com.garam.web.infomation.model.InfomationListVO;
 import com.garam.web.infomation.model.InfomationReplyVO;
 
 public interface InfomationService {
 
-	public List<InfomationListVO> getInfomationList() throws Exception;
+	public List<InfomationListVO> getInfomationList(Search search) throws Exception;
+
+	public int getInfomationCnt(Search search) throws Exception;
 
 	public String insertInfomation(InfomationListVO infomationListVO) throws Exception;
 
